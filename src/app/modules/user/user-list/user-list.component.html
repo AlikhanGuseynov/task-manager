@@ -1,0 +1,99 @@
+<div class="user-page">
+
+  <div class="user-list box">
+    <p class="users-title">
+      Users
+    </p>
+
+    <table cellspacing="0" class="table">
+
+      <thead>
+      <tr>
+        <th class="tr">
+          #
+        </th>
+        <th class="tr">
+          User
+        </th>
+        <th class="tr">
+          Role
+        </th>
+        <th class="tr">
+          Position at work
+        </th>
+        <th class="tr">
+          Department
+        </th>
+        <th class="tr">
+          Status
+        </th>
+        <th class="tr">
+          Tasks
+        </th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+
+      <ng-container *ngFor="let user of userList; let i = index">
+        <tr (click)="activeUser = i" class="tr" [ngClass]="{'active' : activeUser === i}">
+          <td class="td">{{i}}</td>
+          <td class="td">{{user}}</td>
+          <td class="td">{{user}}</td>
+          <td class="td">{{user}}</td>
+          <td class="td">{{user}}</td>
+          <td class="td">{{user}}</td>
+          <td class="td">{{user}}</td>
+        </tr>
+      </ng-container>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <div class="tasks-list box">
+    <p class="task-title">
+      Tasks
+    </p>
+
+
+    <div class="task-list">
+
+      <ng-container *ngFor="let task of taskList; let i = index">
+        <div
+          class="task-item"
+          [ngClass]="{'active' : activeTask === i}"
+          (click)="setOpenTask(i)"
+        >
+          <div class="task-item-header">
+            <p class="task-header">
+              {{task}}
+            </p>
+            <div>
+              <button class="btn go-to-btn">Go to</button>
+            </div>
+            <button class="btn center">
+              <img class="task-header-arrow" src="assets/img/header-arrow.svg" alt="">
+            </button>
+          </div>
+          <div class="task-item-body">
+            <ul>
+              <li>status</li>
+              <li>Creator</li>
+              <li>Performer</li>
+              <li>Deadline</li>
+              <li>Create Date</li>
+            </ul>
+          </div>
+        </div>
+      </ng-container>
+
+    </div>
+
+  </div>
+
+
+</div>

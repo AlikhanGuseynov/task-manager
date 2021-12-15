@@ -1,0 +1,48 @@
+.header {
+  background-color: #ffffff;
+  box-shadow: 0 10px 40px 0 rgb(41 50 65 / 6%);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  margin-left: 35px;
+}
+
+.nav-list-item {
+  margin-right: 40px;
+}
+
+.nav-list-link {
+  font-weight: 600;
+  font-size: 16px;
+  color: #D0D1D2;
+  line-height: 24px;
+  transition: all 300ms ease;
+
+  &.active {
+    color: #11263C;
+  }
+}
+
+.profile-block {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.user-name {
+  margin-right: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 26px;
+  color: #11263C;
+}
+
+.avatar {
+  margin-right: 17px;
+}

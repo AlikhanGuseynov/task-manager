@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+
+.common-input {
+  border-radius: 3px;
+  width: 100%;
+  transition: all 300ms ease;
+  background-color: #F6F7F7;
+  border: 1.2px solid #D4D6D9;
+  color: #515C66;
+  padding: 12px 10px;
+  font-size: 14px;
+
+  &:focus {
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #777bf1;
+  }
+
+  &:disabled {
+    color: #495057;
+    border-color: rgba(206, 212, 218, 0.5);
+  }
+}
+
+.custom-btn {
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 8px 15px;
+  font-size: 14px;
+  line-height: 17px;
+  border: 1px solid #ccc;
+  background: transparent;
+  color: #424242;
+  cursor: pointer;
+
+  &.primary {
+    background: #2196F3;
+    border: 1px solid #2196F3;
+    color: #FFFFFF;
+  }
+
+
+  &:disabled {
+    opacity: .5;
+  }
+
+}
+
+body {
+  background: #F2F2F7 !important;
+}
+
+.box {
+  background: #FFFFFF;
+  box-shadow: 0 4px 90px rgba(163, 171, 185, 0.24);
+  border-radius: 20px;
+  margin: 20px;
+
+  &.padding {
+    padding: 32px 43px;
+  }
+}
+
+.box + .box {
+  margin-left: 0;
+}
