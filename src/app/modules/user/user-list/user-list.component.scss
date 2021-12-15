@@ -1,0 +1,149 @@
+.table {
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  padding: 10px;
+}
+
+.table-row:nth-child(odd) {
+  background: rgba(244, 242, 255, 0.5);
+}
+
+.table-cell {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #25213B;
+}
+
+.table-row-header {
+  background: #F4F2FF !important;
+
+  .table-cell {
+    font-weight: 600;
+    font-size: 16px;
+  }
+}
+
+.last-login {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #6E6893;
+}
+
+.email {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.05em;
+  color: #6E6893;
+}
+
+.table-top {
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: .2fr .6fr .2fr;
+  align-items: center;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 19px;
+  color: #25213B;
+  border: 1px solid #C6C2DE;
+  box-sizing: border-box;
+  border-radius: 6px;
+  transition: all 300ms ease;
+
+  &:hover {
+    background: #f4f3f8;
+  }
+
+  img {
+    margin-right: 10px;
+  }
+}
+
+.search-container {
+  position: relative;
+  max-width: 392px;
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-right: 10px;
+    position: absolute;
+    left: 10px;
+  }
+}
+
+.search-input {
+  font-size: 12px;
+  line-height: 15px;
+  color: #6E6893;
+  width: 100%;
+  padding: 13px 40px;
+  background: #F4F2FF;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  transition: all 300ms ease;
+
+  &::placeholder {
+    font-size: 12px;
+    line-height: 15px;
+    color: #6E6893;
+  }
+
+  &:focus {
+    border: 1px solid #6D5BD0;
+  }
+}
+
+.add-user-btn {
+  background: #6D5BD0;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  transition: all 300ms ease;
+
+  &:hover {
+    opacity: .9;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

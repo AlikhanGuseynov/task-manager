@@ -7,6 +7,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
+  userList = [
+    'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text',
+  ]
+
+  activeUser = 1;
+  activeTask = 1;
+
 
   constructor() {
   }

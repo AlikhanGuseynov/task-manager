@@ -1,0 +1,96 @@
+<div class="box">
+
+
+  <div class="table">
+
+    <div class="table-top">
+      <div class="filter-container">
+        <button class="btn filter-btn">
+          <img src="assets/img/filter.svg" alt="">
+          Filter
+        </button>
+      </div>
+
+      <div class="search-container">
+        <img src="assets/img/search.svg" alt="">
+        <input type="text" class="search-input" placeholder="Search Users by Name, Email or Date">
+      </div>
+
+      <div>
+        <button class="btn add-user-btn" [routerLink]="'/user/add'">
+          Add user
+        </button>
+      </div>
+
+    </div>
+    <div class="table-row table-row-header">
+      <div class="table-cell">
+        #
+      </div>
+      <div class="table-cell">
+        User
+      </div>
+      <div class="table-cell">
+        Email
+      </div>
+      <div class="table-cell">
+        Role
+      </div>
+      <div class="table-cell">
+        Position at work
+      </div>
+      <div class="table-cell">
+        Department
+      </div>
+      <div class="table-cell">
+        Last login
+      </div>
+      <div class="table-cell">
+        Active Tasks
+      </div>
+      <div class="table-cell">
+        Action
+      </div>
+    </div>
+
+    <ng-container *ngFor="let user of userList; let i = index">
+      <div class="table-row">
+        <div class="table-cell">
+          {{i}}
+        </div>
+        <div class="table-cell">
+          User
+        </div>
+        <div class="table-cell">
+          <p class="email">
+            Email
+          </p>
+        </div>
+        <div class="table-cell">
+          Role
+        </div>
+        <div class="table-cell">
+          Position at work
+        </div>
+        <div class="table-cell">
+          Department
+        </div>
+        <div class="table-cell">
+          <p class="last-login">
+            Last login
+          </p>
+        </div>
+        <div class="table-cell">
+          Active Tasks
+        </div>
+        <div class="table-cell">
+          Action
+        </div>
+      </div>
+    </ng-container>
+
+
+  </div>
+
+
+</div>
