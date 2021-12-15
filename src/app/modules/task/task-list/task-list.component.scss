@@ -1,0 +1,26 @@
+.task-page {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+}
+
+.task-title {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #1F4173;
+  padding: 20px;
+  border-bottom: 1px solid #a5b4cb;
+}
+
+.task-item {
+  font-size: 14px;
+  line-height: 17px;
+  color: #1F4173;
+  padding: 10px 25px;
+  border-bottom: 1px solid #E6EAF0;
+  cursor: pointer;
+}
+
+.task-detail-body{
+  padding: 15px;
+}

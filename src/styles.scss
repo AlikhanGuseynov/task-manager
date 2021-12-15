@@ -21,6 +21,23 @@
   }
 }
 
+.common-input-label {
+  font-size: 18px;
+  color: #383d42;
+  font-weight: 500;
+}
+
+.common-input-value {
+  font-size: 14px;
+  color: #495057;
+  margin-bottom: 10px;
+}
+
+.common-input-label + .common-input-value {
+  margin-top: 7px;
+  margin-bottom: 15px;
+}
+
 .custom-btn {
   box-sizing: border-box;
   border-radius: 3px;
