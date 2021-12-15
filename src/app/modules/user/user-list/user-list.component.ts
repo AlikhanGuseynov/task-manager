@@ -7,19 +7,6 @@ import {Component, OnInit} from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  userList = [
-    'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text',
-  ]
-  taskList = [
-    'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text',
-    'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text',
-    'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text',
-    'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text',
-    'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text', 'Some text',
-  ]
-
-  activeUser = 1;
-  activeTask = 1;
 
   constructor() {
   }
@@ -27,8 +14,4 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  setOpenTask(i: number) {
-    this.activeTask = this.activeTask === i ? -1 : i;
-  }
 }

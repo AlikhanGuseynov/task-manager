@@ -10,6 +10,14 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)
   },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path: 'task',
+    loadChildren: () => import('./modules/task/task.module').then(m => m.TaskModule)
+  },
 ];
 
 @NgModule({
