@@ -7,7 +7,7 @@ import {UserAddComponent} from "./user-add/user-add.component";
 const routes: Routes = [
   {path: 'list', component: UserListComponent},
   {path: 'add', component: UserAddComponent},
-  {path: 'edit', component: UserAddComponent},
+  {path: 'edit/:id', component: UserAddComponent},
   {path: 'details', component: UserDetailsComponent},
   {path: '', redirectTo: '/user/list'}
 ];

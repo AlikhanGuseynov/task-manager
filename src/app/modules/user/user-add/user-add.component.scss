@@ -1,0 +1,59 @@
+.title {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 19px;
+  color: #1F4173;
+  margin-bottom: 15px;
+}
+
+.form {
+  width: 300px;
+}
+
+.common-input {
+  margin-bottom: 20px;
+}
+
+.common-input-select {
+  padding-right: 15px;
+}
+
+.add-user-btn {
+  background: #777bf1;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  padding: 10px 15px;
+  display: block;
+  transition: all 300ms ease;
+  width: 100%;
+
+  &:hover {
+    opacity: .9;
+  }
+}
+
+.password-input-wrapper {
+  margin-bottom: 20px;
+  position: relative;
+
+  .common-input {
+    margin: 0;
+  }
+}
+
+.password-toggle-btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+
+  img {
+    width: 20px;
+  }
+}

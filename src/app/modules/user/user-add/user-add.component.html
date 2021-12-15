@@ -1,1 +1,40 @@
-<p>user-add works!</p>
+<div class="box padding">
+
+  <p class="title" *ngIf="!userId">
+    Add user
+  </p>
+
+  <p class="title" *ngIf="userId">
+    Edit user
+  </p>
+
+  <form class="form">
+
+    <input type="text" class="common-input" name="name" placeholder="name">
+    <input type="text" class="common-input" name="surname" placeholder="surname">
+    <input type="text" class="common-input" name="email" placeholder="email">
+    <div class="password-input-wrapper">
+      <input type="password" class="common-input" #password name="password" placeholder="password">
+      <button type="button" class="btn password-toggle-btn" (click)="togglePassword(password)">
+        <img *ngIf="password.type === 'text'" src="assets/img/hide-pass.svg" class="hide-pass" alt="">
+        <img *ngIf="password.type === 'password'" src="assets/img/show-pass.svg" class="show-pass" alt="">
+      </button>
+    </div>
+    <select name="role" id="" class="common-input common-input-select">
+      <option value="admin">Admin</option>
+      <option value="User">User</option>
+    </select>
+    <input type="text" class="common-input" name="position" placeholder="Position at work">
+    <input type="text" class="common-input" name="department" placeholder="Department">
+
+    <button (click)="addUser()" type="button" class="btn add-user-btn" *ngIf="!userId">
+      Add user
+    </button>
+
+    <button (click)="addUser()" type="button" class="btn add-user-btn" *ngIf="userId">
+      Save
+    </button>
+
+  </form>
+
+</div>
