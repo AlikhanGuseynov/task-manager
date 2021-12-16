@@ -10,6 +10,7 @@ export const UserMock: User[] = [
     email: 'alikhan-gusejjnv@list.ru',
     password: 'Qq()1852439',
     role: RoleEnum.ADMIN,
+    lastLogin: 1639674554567,
     id: 0,
   },
   {
@@ -20,6 +21,7 @@ export const UserMock: User[] = [
     email: 'name.qwerty21@mail.ru',
     password: 'Qq()1852439',
     role: RoleEnum.USER,
+    lastLogin: 1639674536458,
     id: 1,
   }
 ]

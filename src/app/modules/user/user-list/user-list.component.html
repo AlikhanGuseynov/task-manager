@@ -16,11 +16,9 @@
         <input type="text" class="search-input" placeholder="Search Users by Name, Email or Date">
       </div>
 
-      <div>
-        <button class="btn add-user-btn" [routerLink]="'/user/add'">
-          Add user
-        </button>
-      </div>
+      <button class="btn add-user-btn" [routerLink]="'/user/add'">
+        Add user
+      </button>
 
     </div>
     <div class="table-row table-row-header">
@@ -53,35 +51,41 @@
       </div>
     </div>
 
-    <ng-container *ngFor="let user of userList; let i = index">
+    <ng-container *ngFor="let userItem of userList; let i = index">
       <div class="table-row">
         <div class="table-cell">
           {{i}}
         </div>
         <div class="table-cell">
-          User
+          {{userItem?.userName}} {{userItem.surname}}
         </div>
         <div class="table-cell">
           <p class="email">
-            Email
+            {{userItem?.email}}
           </p>
         </div>
         <div class="table-cell">
-          Role
+          {{getRole(userItem)}}
         </div>
         <div class="table-cell">
-          Position at work
+          {{userItem?.position}}
         </div>
         <div class="table-cell">
-          Department
+          {{userItem?.department}}
         </div>
         <div class="table-cell">
           <p class="last-login">
-            Last login
+            {{getDate(userItem?.lastLogin)}}
+          </p>
+          <p class="last-login">
+            {{getTime(userItem?.lastLogin)}}
           </p>
         </div>
         <div class="table-cell">
-          Active Tasks
+          <div class="task-cell">
+            {{getSolvedTasks(userItem?.taskCounter, userItem?.solvedTaskCounter)}}
+            <p>Show all</p>
+          </div>
         </div>
         <div class="table-cell">
           <button class="btn" [routerLink]="'/user/edit/' + i">
@@ -90,8 +94,6 @@
         </div>
       </div>
     </ng-container>
-
-
   </div>
 
 

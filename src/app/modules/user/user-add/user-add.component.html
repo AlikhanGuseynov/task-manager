@@ -76,6 +76,7 @@
     <select
       #role="ngModel"
       [(ngModel)]="user.role"
+      required
       [ngClass]="{'error' : (role.touched && role.invalid) || (role.invalid && !formIsValid)}"
       name="role" id=""
       class="common-input common-input-select"
