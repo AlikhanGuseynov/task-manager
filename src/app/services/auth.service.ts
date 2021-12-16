@@ -12,7 +12,7 @@ export class AuthService {
   isLogin = false;
   isLogin$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
   currentUser: User | undefined;
-  currentUser$: Subject<User> = new Subject<User>()
+  currentUser$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined)
 
   constructor(
     private userServices: UserService
@@ -29,15 +29,31 @@ export class AuthService {
     return user;
   }
 
+  logOut() {
+    this.currentUser = undefined;
+    this.currentUser$.next(this.currentUser)
+    this.isLogin = false;
+    this.isLogin$.next(this.isLogin)
+  }
+
+  getIsLogin(): Observable<boolean> {
+    return this.isLogin$.asObservable()
+  }
+
   setCurrentUser(user: User) {
     this.currentUser = user;
     this.currentUser$.next(this.currentUser)
+    this.setIsLogin(true)
   }
 
-  getCurrentUser(): Observable<User> {
+  setIsLogin(state: boolean) {
+    this.isLogin = state;
+    this.isLogin$.next(this.isLogin)
+  }
+
+  getCurrentUser(): Observable<User | undefined> {
     return this.currentUser$.asObservable()
   }
-
 
   register(user: User) {
     this.userServices.setUser(user);

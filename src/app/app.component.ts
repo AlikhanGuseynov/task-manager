@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AuthService} from "./services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'task-manager';
+
+  isLogin = false;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.authService.getIsLogin().subscribe(event => {
+      this.isLogin = event;
+      if (!this.isLogin) {
+        this.router.navigate(['/auth/login'])
+      }
+    })
+  }
 }

@@ -33,11 +33,19 @@
 
   <div class="profile-block">
 
-    <p class="user-name">
-      {{user?.userName}}
-    </p>
+    <div class="user-data">
 
-    <div class="avatar center">
+      <p class="user-name">
+        {{user?.userName}}
+      </p>
+      <p class="company-name">
+        {{user?.organizationName}}
+      </p>
+
+    </div>
+
+
+    <div class="avatar center" (click)="logOut()">
       <img src="assets/img/avatar.svg" alt="">
     </div>
 

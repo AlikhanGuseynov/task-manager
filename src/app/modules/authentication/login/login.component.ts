@@ -25,10 +25,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.logOut();
   }
 
   login(form: NgForm) {
-    console.log(form.form.valid)
     this.formIsValid = form.form.valid;
     const loginForm: Login = {
       email: form.form.controls.email.value,

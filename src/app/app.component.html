@@ -1,4 +1,6 @@
-
-<app-header></app-header>
+<div [ngStyle]="{'display': isLogin? 'block' : 'none'}">
+  <app-header *ngIf="isLogin"></app-header>
+</div>
 
 <router-outlet></router-outlet>
+

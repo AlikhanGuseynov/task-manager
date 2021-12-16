@@ -22,7 +22,6 @@ export class UserAddComponent implements OnInit {
   }
 
   addUser() {
-    console.log('save')
   }
 
   togglePassword(password: HTMLInputElement) {

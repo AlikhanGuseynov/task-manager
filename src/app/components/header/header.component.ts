@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../models/user";
 
@@ -14,13 +14,25 @@ export class HeaderComponent implements OnInit {
   constructor(
     private authService: AuthService
   ) {
+  }
+
+  ngOnInit(): void {
     this.authService.getCurrentUser().subscribe(event => {
       this.user = event;
     })
   }
 
-  ngOnInit(): void {
-
+  logOut() {
+    const user: User = {
+      address: 'string',
+      email: 'string',
+      id: 0,
+      mobile: 'string',
+      organizationName: 'string',
+      password: 'string',
+      role: 'string',
+      userName: 'string',
+    }
+    this.authService.setCurrentUser(user)
   }
-
 }

@@ -16,7 +16,6 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    console.log(this.userList)
     return this.userList$.asObservable();
   }
 
@@ -27,7 +26,6 @@ export class UserService {
   setUser(user: User): void {
     this.userList.push(user);
     this.userList$.next(this.userList);
-    console.log('added')
   }
 
   getUserById(id: number): User | undefined {
