@@ -13,7 +13,7 @@
 
       <div class="search-container">
         <img src="assets/img/search.svg" alt="">
-        <input type="text" class="search-input" placeholder="Search Users by Name, Email or Date">
+        <input #filterInput (input)="filter(filterInput)" type="text" class="search-input" placeholder="Search Users by Name, Email or Date">
       </div>
 
       <button class="btn add-user-btn" [routerLink]="'/user/add'">
