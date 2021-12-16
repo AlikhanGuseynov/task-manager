@@ -1,0 +1,35 @@
+.toast-container {
+  min-width: 313px;
+  max-width: 500px;
+  min-height: 64px;
+  background: #FFFFFF;
+  border-radius: 4px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  right: 20px;
+  bottom: 0px;
+  transition: all 100ms ease;
+  opacity: 0;
+  visibility: hidden;
+
+  &.active {
+    opacity: 1;
+    bottom: 40px;
+    visibility: unset;
+  }
+}
+
+.toast-text {
+  font-size: 16px;
+  line-height: 19px;
+  color: #000000;
+  margin-left: 8px;
+}
+
+.close-toast-btn {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+}

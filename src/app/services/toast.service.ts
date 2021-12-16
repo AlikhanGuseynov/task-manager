@@ -4,7 +4,7 @@ import {ToastTypeEnum} from "../enums/toast-type.enum";
 
 export interface ToastData {
   state: boolean;
-  text?: string;
+  text: string;
   type?: ToastTypeEnum;
 }
 
@@ -22,11 +22,10 @@ export class ToastService {
   constructor() {
   }
 
-  createToast(text?: string, type?: ToastTypeEnum, durationMs?: number) {
-    text = text ? text : 'SUCCESS';
+  createToast(text: string, type?: ToastTypeEnum, durationMs?: number) {
     this.toast$.next({state: true, text, type})
     this.customTimeOut = setTimeout(() => {
-      this.toast$.next({state: false, text})
+      this.toast$.next({state: false, text, type})
     }, durationMs ? durationMs : 3000)
   }
 
