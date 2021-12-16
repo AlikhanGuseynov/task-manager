@@ -4,6 +4,7 @@ import {RoleEnum} from "../enums/role.enum";
 export const UserMock: User[] = [
   {
     companyName: 'GoldenPay',
+    companyId: 123,
     mobile: 994515130696,
     address: 'Mir Celal 1',
     userName: 'Alixan - admin',
@@ -17,6 +18,7 @@ export const UserMock: User[] = [
   },
   {
     companyName: 'GoldenPay',
+    companyId: 123,
     mobile: 994556437953,
     address: 'Cefer Cabbarli 95',
     userName: 'Alixan useruser',
@@ -30,6 +32,7 @@ export const UserMock: User[] = [
   },
   {
     companyName: 'GoldenPay',
+    companyId: 987,
     mobile: 994515130696,
     address: 'Mir Celal 1',
     userName: 'Alixan - admin',
@@ -43,6 +46,7 @@ export const UserMock: User[] = [
   },
   {
     companyName: 'GoldenPay',
+    companyId: 987,
     mobile: 994556437953,
     address: 'Cefer Cabbarli 95',
     userName: 'Alixan useruser',

@@ -6,8 +6,8 @@
     </p>
     <div class="task-list">
       <ng-container *ngFor="let task of taskList">
-        <div class="task-item">
-          {{task}}
+        <div class="task-item" (click)="currentTask = task">
+          {{task?.title}}
         </div>
       </ng-container>
     </div>
@@ -22,22 +22,38 @@
     <div class="task-detail-body">
 
       <p class="custom-input-label">Title</p>
-      <p class="custom-input-value">Title</p>
+      <p class="custom-input-value">
+        {{currentTask?.title}}
+      </p>
 
       <p class="custom-input-label">Description</p>
-      <p class="custom-input-value">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur illum inventore laudantium, possimus qui quos similique. Delectus deserunt eaque illo ipsam quo reiciendis sapiente.</p>
+      <p class="custom-input-value">
+        {{currentTask?.description}}
+      </p>
 
       <p class="custom-input-label">Deadline</p>
-      <p class="custom-input-value">09/13/2021</p>
+      <p class="custom-input-value">
+        {{currentTask?.deadline | date : 'dd-MM-yyyy'}}
+      </p>
 
       <p class="custom-input-label">Status</p>
-      <p class="custom-input-value">In progress</p>
+      <p class="custom-input-value">
+        {{getStatus(currentTask.status)}}
+      </p>
 
       <p class="custom-input-label">Creator</p>
-      <p class="custom-input-value">Name Surname</p>
+      <p class="custom-input-value">
+        <button class="btn user-btn">
+          {{currentTask?.creator?.userName }} {{currentTask?.creator?.surname}}
+        </button>
+      </p>
 
       <p class="custom-input-label">Performer</p>
-      <p class="custom-input-value">Name Surname</p>
+      <p class="custom-input-value">
+        <button *ngFor="let user of currentTask.performer" class="btn user-btn">
+          {{user?.userName }} {{user?.surname}}
+        </button>
+      </p>
 
 
     </div>

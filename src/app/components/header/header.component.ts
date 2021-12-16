@@ -22,16 +22,9 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+
   logOut() {
-    const user: User = {
-      address: 'string',
-      email: 'string',
-      id: 0,
-      mobile: 0,
-      companyName: 'string',
-      password: 'string',
-      userName: 'string',
-    }
+    const user: User = new User();
     this.authService.setCurrentUser(user)
   }
 }

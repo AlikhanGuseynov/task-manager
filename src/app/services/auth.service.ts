@@ -12,8 +12,8 @@ export class AuthService {
 
   isLogin = false;
   isLogin$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
-  currentUser: User | undefined;
-  currentUser$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined)
+  currentUser: User = new User();
+  currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(new User())
 
   constructor(
     private userServices: UserService
@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   logOut() {
-    this.currentUser = undefined;
+    // this.currentUser = null;
     this.currentUser$.next(this.currentUser)
     this.isLogin = false;
     this.isLogin$.next(this.isLogin)

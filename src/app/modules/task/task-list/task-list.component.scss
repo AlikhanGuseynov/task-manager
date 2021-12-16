@@ -21,6 +21,21 @@
   cursor: pointer;
 }
 
-.task-detail-body{
+.task-detail-body {
   padding: 15px;
+}
+
+.user-btn {
+  font-size: 14px;
+  color: #424242;
+  border: 1px solid #2f2f2f;
+  border-radius: 3px;
+  padding: 5px 10px;
+  &:hover{
+    background: #f5f5f5;
+  }
+}
+
+.user-btn + .user-btn {
+  margin-left: 10px;
 }

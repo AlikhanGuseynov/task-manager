@@ -2,6 +2,7 @@ import {RoleEnum} from "../enums/role.enum";
 
 export class User {
   companyName: string;
+  companyId: number;
   mobile: number;
   address: string;
   userName: string;
@@ -31,8 +32,10 @@ export class User {
     id?: number,
     taskCounter?: number,
     solvedTaskCounter?: number,
+    companyId?: number,
   ) {
     this.companyName = companyName ? companyName : '';
+    this.companyId = companyId ? companyId : -1;
     this.mobile = mobile ? mobile : -1;
     this.address = address ? address : '';
     this.userName = userName ? userName : '';
@@ -47,4 +50,5 @@ export class User {
     this.taskCounter = id ? id : 0;
     this.solvedTaskCounter = id ? id : 0;
   }
+
 }
