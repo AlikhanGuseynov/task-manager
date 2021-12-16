@@ -27,10 +27,9 @@ export class HeaderComponent implements OnInit {
       address: 'string',
       email: 'string',
       id: 0,
-      mobile: 'string',
+      mobile: 0,
       companyName: 'string',
       password: 'string',
-      role: 'string',
       userName: 'string',
     }
     this.authService.setCurrentUser(user)
