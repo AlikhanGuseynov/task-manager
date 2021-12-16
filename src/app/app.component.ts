@@ -18,7 +18,7 @@ export class AppComponent {
     this.authService.getIsLogin().subscribe(event => {
       this.isLogin = event;
       if (!this.isLogin) {
-        this.router.navigate(['/auth/login'])
+        // this.router.navigate(['/auth/login'])
       }
     })
   }

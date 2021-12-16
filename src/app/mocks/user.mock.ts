@@ -2,7 +2,7 @@ import {User} from "../models/user";
 
 export const UserMock: User[] = [
   {
-    organizationName: 'GoldenPay',
+    companyName: 'GoldenPay',
     mobile: '0515130696',
     address: 'Some address',
     userName: 'Alixan',

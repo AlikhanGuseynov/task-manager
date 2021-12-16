@@ -6,16 +6,101 @@
 
     <div class="register-form-inner">
 
-      <input ngModel type="text" class="common-input" placeholder="Company Name" name="organizationName">
-      <input ngModel type="number" class="common-input" placeholder="Number" name="mobile">
-      <input ngModel type="text" class="common-input" placeholder="Address" name="address">
+      <input
+        #companyName="ngModel"
+        [(ngModel)]="user.companyName"
+        [ngClass]="{'error' : (companyName.touched && companyName.invalid) || (companyName.invalid && !formIsValid)}"
+        type="text"
+        class="common-input"
+        placeholder="Organization Name"
+        name="companyName"
+        minlength="3"
+        required
+      >
+      <p class="error-text" *ngIf="(companyName.touched && companyName.invalid) || (companyName.invalid && !formIsValid)">
+        Company name must include min 3 characters.
+      </p>
 
-      <input ngModel type="text" class="common-input" placeholder="Name" name="userName">
-      <input ngModel type="text" class="common-input" placeholder="Email" name="email">
-      <input ngModel type="password" class="common-input" placeholder="Password" name="password">
-      <button class="btn primary" (click)="save(registerForm)">
+      <input
+        #mobile="ngModel"
+        [(ngModel)]="user.mobile"
+        [ngClass]="{'error' : (mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid) }"
+        type="number"
+        class="common-input"
+        placeholder="Number"
+        name="mobile"
+        minlength="3"
+        required
+      >
+      <p class="error-text" *ngIf="(mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid)">
+        Mobile number name must include min 3 characters.
+      </p>
+
+      <input
+        #address="ngModel"
+        [(ngModel)]="user.address"
+        [ngClass]="{'error' : (address.touched && address.invalid) || (address.invalid && !formIsValid) }"
+        type="text"
+        class="common-input"
+        placeholder="Address"
+        name="address"
+        minlength="3"
+        required
+      >
+      <p class="error-text" *ngIf="(address.touched && address.invalid) || (address.invalid && !formIsValid)">
+        Address name must include min 3 characters.
+      </p>
+
+      <input
+        #userName="ngModel"
+        [(ngModel)]="user.userName"
+        [ngClass]="{'error' : (userName.touched && userName.invalid) || (userName.invalid && !formIsValid) }"
+        type="text"
+        class="common-input"
+        placeholder="Name"
+        name="userName"
+        minlength="3"
+        required
+      >
+      <p class="error-text" *ngIf="(userName.touched && userName.invalid) || (userName.invalid && !formIsValid)">
+        User name must include min 3 characters.
+      </p>
+
+      <input
+        #email="ngModel"
+        [(ngModel)]="user.email"
+        [ngClass]="{'error' : (email.touched && email.invalid) || (email.invalid && !formIsValid) }"
+        type="text"
+        [pattern]="emailPattern"
+        class="common-input"
+        placeholder="Email"
+        name="email"
+        minlength="3"
+        required
+      >
+      <p class="error-text" *ngIf="(email.touched && email.invalid) || (email.invalid && !formIsValid)">
+        Email must include min 3 characters.
+      </p>
+
+      <input
+        #password="ngModel"
+        [(ngModel)]="user.password"
+        [ngClass]="{'error' : (password.touched && password.invalid) || (password.invalid && !formIsValid) }"
+        type="password"
+        class="common-input"
+        placeholder="Password"
+        name="password"
+        minlength="3"
+        required
+      >
+      <p class="error-text" *ngIf="(password.touched && password.invalid) || (password.invalid && !formIsValid)">
+        Password must include min 3 characters.
+      </p>
+
+      <button class="btn custom-btn primary save-btn" (click)="save(registerForm)">
         Save
       </button>
+
       <p class="login-question">You have an account, <a [routerLink]="'/auth/login'">log in</a></p>
 
     </div>

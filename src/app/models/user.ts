@@ -1,5 +1,5 @@
 export interface User {
-  organizationName: string;
+  companyName: string;
   mobile: string;
   address: string;
   userName: string;

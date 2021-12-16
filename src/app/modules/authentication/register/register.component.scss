@@ -1,9 +1,13 @@
 .common-input {
-  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.error-text {
+  margin-top: 5px;
 }
 
 .register-form {
-  width: 300px;
+  width: 320px;
   border-radius: 2px;
 }
 
@@ -25,12 +29,19 @@
 }
 
 .login-question {
+  font-size: 14px;
   font-weight: 500;
   color: rgba(41, 50, 65, 0.5);
   text-align: right;
+  margin-top: 5px;
 
   a {
     color: #2170E7;
     cursor: pointer;
   }
+}
+
+.save-btn {
+  width: 100%;
+  margin-top: 15px;
 }

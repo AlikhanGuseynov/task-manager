@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
       email: 'string',
       id: 0,
       mobile: 'string',
-      organizationName: 'string',
+      companyName: 'string',
       password: 'string',
       role: 'string',
       userName: 'string',
