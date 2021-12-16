@@ -10,19 +10,25 @@
   padding: 12px 10px;
   font-size: 14px;
 
-  &.error {
-    border: 1px solid #F44336;
-  }
-
   &:focus {
     outline-offset: 0;
-    box-shadow: 0 0 0 0.2rem #777bf1;
+    //box-shadow: 0 0 0 0.2rem #777bf1;
+    border: 1px solid #777bf1;
   }
 
   &:disabled {
     color: #495057;
     border-color: rgba(206, 212, 218, 0.5);
   }
+
+  &.error {
+    border: 1px solid #F44336;
+  }
+}
+
+.error-text {
+  color: #F44336;
+  font-size: 12px;
 }
 
 .common-input-label {

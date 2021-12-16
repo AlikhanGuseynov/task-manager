@@ -1,5 +1,5 @@
 .common-input {
-  margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .register-form {
@@ -28,6 +28,8 @@
   font-weight: 500;
   color: rgba(41, 50, 65, 0.5);
   text-align: right;
+  margin-top: 10px;
+  font-size: 14px;
 
   a {
     color: #2170E7;
@@ -37,5 +39,9 @@
 
 .login-btn {
   width: 100%;
-  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.error-text {
+  margin-top: 5px;
 }

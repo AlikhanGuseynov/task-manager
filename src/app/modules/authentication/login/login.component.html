@@ -10,17 +10,30 @@
         class="common-input"
         placeholder="email"
         name="email"
-        ngModel=""
-        [email]="true"
+        [(ngModel)]="user.email"
+        #email="ngModel"
+        [ngClass]="{'error': (email.touched && email.invalid) || (email.invalid && !formIsValid)}"
+        [pattern]="emailPattern"
+        required
       >
+      <p class="error-text" *ngIf="(email.touched && email.invalid) || (email.invalid && !formIsValid)">
+        Write mail in correct format
+      </p>
+
       <input
         type="password"
         class="common-input"
         placeholder="Password"
         name="password"
-        ngModel
+        [(ngModel)]="user.password"
+        #password='ngModel'
+        [ngClass]="{'error': (password.touched && password.invalid) || (password.invalid && !formIsValid)}"
+        required
         minlength="6"
       >
+      <p class="error-text" *ngIf="(password.touched && password.invalid) || (password.invalid && !formIsValid)">
+        Password must be at least 6 characters.
+      </p>
 
       <button class="btn custom-btn primary login-btn" (click)="login(loginForm)">
         Log In
