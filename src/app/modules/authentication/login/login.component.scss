@@ -4,7 +4,6 @@
 
 .register-form {
   width: 300px;
-  background: #FFFFFF;
   border-radius: 2px;
 }
 
@@ -34,4 +33,9 @@
     color: #2170E7;
     cursor: pointer;
   }
+}
+
+.login-btn {
+  width: 100%;
+  margin-bottom: 15px;
 }

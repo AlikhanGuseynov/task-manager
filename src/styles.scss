@@ -10,6 +10,10 @@
   padding: 12px 10px;
   font-size: 14px;
 
+  &.error {
+    border: 1px solid #F44336;
+  }
+
   &:focus {
     outline-offset: 0;
     box-shadow: 0 0 0 0.2rem #777bf1;
@@ -41,8 +45,8 @@
 .custom-btn {
   box-sizing: border-box;
   border-radius: 3px;
-  padding: 8px 15px;
-  font-size: 14px;
+  padding: 10px 15px;
+  font-size: 16px;
   line-height: 17px;
   border: 1px solid #ccc;
   background: transparent;

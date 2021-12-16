@@ -9,49 +9,38 @@ import {UserService} from "./user.service";
 })
 export class AuthService {
 
-  login = false;
-  login$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLogin = false;
+  isLogin$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
   currentUser: User | undefined;
-  currentUser$: Subject<User> = new Subject<User>();
+  currentUser$: Subject<User> = new Subject<User>()
 
   constructor(
     private userServices: UserService
   ) {
   }
 
-  logIn(params: Login) {
-    this.userServices.getUsers().subscribe(event => {
-      let user = event.find(event => {
-        return event.email === params.email && event.password === params.password
-      });
-      if (user) {
-        this.currentUser = user;
-        this.currentUser$.next(this.currentUser);
-        this.login = true;
-        this.login$.next(this.login);
-        return this.currentUser;
-      } else {
-        this.currentUser$.next(this.currentUser)
-        this.login = false;
-        this.login$.next(this.login);
-        return undefined;
-      }
+  login(params: Login) {
+    const user = this.userServices.getUsersList().find(item => {
+      return item.email === params.email && item.password === params.password;
     })
+    if (user) {
+      this.setCurrentUser(user);
+    }
+    return user;
   }
 
-  signUp(user: User) {
+  setCurrentUser(user: User) {
+    this.currentUser = user;
+    this.currentUser$.next(this.currentUser)
+  }
+
+  getCurrentUser(): Observable<User> {
+    return this.currentUser$.asObservable()
+  }
+
+
+  register(user: User) {
     this.userServices.setUser(user);
-  }
-
-  // @ts-ignore
-  getUser(): Observable<User> | undefined {
-    this.login$.subscribe(event => {
-      if (event) {
-        return this.currentUser$.asObservable();
-      } else {
-        return undefined;
-      }
-    })
   }
 
 
