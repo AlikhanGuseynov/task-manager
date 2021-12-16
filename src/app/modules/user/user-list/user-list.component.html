@@ -84,11 +84,11 @@
         <div class="table-cell">
           <div class="task-cell">
             {{getSolvedTasks(userItem?.taskCounter, userItem?.solvedTaskCounter)}}
-            <p>Show all</p>
+            <button class="btn action-btn">Show all</button>
           </div>
         </div>
         <div class="table-cell">
-          <button class="btn" [routerLink]="'/user/edit/' + i">
+          <button class="btn action-btn" [routerLink]="'/user/edit/' + userItem.id">
             Edit
           </button>
         </div>

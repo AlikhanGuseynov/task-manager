@@ -135,13 +135,24 @@
   display: flex;
   align-items: center;
 
-  p {
-    margin-left: 10px;
-    cursor: pointer;
-  }
+
 }
 
+.action-btn {
+  margin-left: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+  text-decoration-color: #424242;
+  color: #424242;
+  transition: all 300ms ease;
+  font-weight: 500;
 
+  &:hover {
+    text-decoration-color: #152ab1;
+    color: #152ab1;
+  }
+}
 
 
 

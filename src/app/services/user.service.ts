@@ -31,10 +31,11 @@ export class UserService {
       return e.email === user.email
     })
     this.userList.map(e => {
-      if(e.email === user.email){
+      if (e.email === user.email) {
         console.log(e.email, user.email)
       }
     })
+    user.role = user?.role ? +user?.role : undefined;
     if (sameUser) {
       this.toastService.createToast('This user already exist.', ToastTypeEnum.INFO)
       return false
@@ -43,6 +44,24 @@ export class UserService {
       this.userList$.next(this.userList);
       this.toastService.createToast('User was added.')
       return true;
+    }
+  }
+
+  putUser(user: User) {
+    let isChanged = false;
+    this.userList.map(event => {
+      if (event.id === user.id) {
+        event = user;
+        isChanged = true;
+      }
+    })
+    if (isChanged) {
+      this.userList$.next(this.userList);
+      this.toastService.createToast('User was changed success.', ToastTypeEnum.SUCCESS)
+      return true;
+    } else {
+      this.toastService.createToast('We have problem to change  user date.', ToastTypeEnum.ERROR)
+      return false;
     }
   }
 
