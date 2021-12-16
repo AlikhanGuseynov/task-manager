@@ -8,30 +8,103 @@
     Edit user
   </p>
 
-  <form class="form">
+  <form class="form" #userForm='ngForm'>
 
-    <input type="text" class="common-input" name="name" placeholder="name">
-    <input type="text" class="common-input" name="surname" placeholder="surname">
-    <input type="text" class="common-input" name="email" placeholder="email">
+    <input
+      type="text"
+      class="common-input"
+      name="userName"
+      #userName="ngModel"
+      required
+      minlength="3"
+      [(ngModel)]="user.userName"
+      [ngClass]="{'error' : (userName.touched && userName.invalid) || (userName.invalid && !formIsValid)}"
+      placeholder="name"
+    >
+
+    <input
+      type="text"
+      class="common-input"
+      name="surname"
+      #surname="ngModel"
+      required
+      minlength="3"
+      [(ngModel)]="user.surname"
+      [ngClass]="{'error' : (surname.touched && surname.invalid) || (surname.invalid && !formIsValid)}"
+      placeholder="surname"
+    >
+
+    <input
+      type="text"
+      class="common-input"
+      name="email"
+      #email="ngModel"
+      required
+      minlength="3"
+      [(ngModel)]="user.email"
+      [ngClass]="{'error' : (email.touched && email.invalid) || (email.invalid && !formIsValid)}"
+      placeholder="email"
+    >
+
     <div class="password-input-wrapper">
-      <input type="password" class="common-input" #password name="password" placeholder="password">
-      <button type="button" class="btn password-toggle-btn" (click)="togglePassword(password)">
-        <img *ngIf="password.type === 'text'" src="assets/img/hide-pass.svg" class="hide-pass" alt="">
-        <img *ngIf="password.type === 'password'" src="assets/img/show-pass.svg" class="show-pass" alt="">
+      <input
+        type="password"
+        class="common-input"
+        name="password"
+        #password="ngModel"
+        #passwordInput
+        required
+        minlength="3"
+        [(ngModel)]="user.password"
+        [ngClass]="{'error' : (password.touched && password.invalid) || (password.invalid && !formIsValid)}"
+        placeholder="password"
+      >
+      <button type="button" class="btn password-toggle-btn" (click)="togglePassword(passwordInput)">
+        <img *ngIf="passwordInput.type === 'text'" src="assets/img/hide-pass.svg" class="hide-pass" alt="">
+        <img *ngIf="passwordInput.type === 'password'" src="assets/img/show-pass.svg" class="show-pass" alt="">
       </button>
     </div>
-    <select name="role" id="" class="common-input common-input-select">
-      <option value="admin">Admin</option>
-      <option value="User">User</option>
-    </select>
-    <input type="text" class="common-input" name="position" placeholder="Position at work">
-    <input type="text" class="common-input" name="department" placeholder="Department">
 
-    <button (click)="addUser()" type="button" class="btn add-user-btn" *ngIf="!userId">
+    <select
+      #role="ngModel"
+      [(ngModel)]="user.role"
+      [ngClass]="{'error' : (role.touched && role.invalid) || (role.invalid && !formIsValid)}"
+      name="role" id=""
+      class="common-input common-input-select"
+    >
+      <option [value]="ROLE_ENUM.ADMIN">Admin</option>
+      <option [value]="ROLE_ENUM.USER">User</option>
+    </select>
+
+    <input
+      type="text"
+      class="common-input"
+      name="position"
+      #position="ngModel"
+      required
+      minlength="3"
+      [(ngModel)]="user.position"
+      [ngClass]="{'error' : (position.touched && position.invalid) || (position.invalid && !formIsValid)}"
+      placeholder="Position at work"
+    >
+
+    <input
+      type="text"
+      class="common-input"
+      name="department"
+      #department="ngModel"
+      required
+      minlength="3"
+      [(ngModel)]="user.department"
+      [ngClass]="{'error' : (department.touched && department.invalid) || (department.invalid && !formIsValid)}"
+      placeholder="Department"
+    >
+
+    <button (click)="addUser(userForm)" type="button" class="btn add-user-btn" *ngIf="!userId">
       Add user
     </button>
 
-    <button (click)="addUser()" type="button" class="btn add-user-btn" *ngIf="userId">
+    <button (click)="saveEdit()" type="button" class="btn add-user-btn" *ngIf="userId">
       Save
     </button>
 

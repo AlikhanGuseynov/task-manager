@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {User} from "../models/user";
 import {Login} from "../models/login";
 import {UserService} from "./user.service";
+import {UserMock} from "../mocks/user.mock";
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,12 @@ export class AuthService {
   constructor(
     private userServices: UserService
   ) {
+    const defaultUser = UserMock[0];
+    this.login({email: defaultUser.email, password: defaultUser.password})
   }
 
   login(params: Login) {
-    const user = this.userServices.getUsersList().find(item => {
+    const user = this.userServices.getUserList().find(item => {
       return item.email === params.email && item.password === params.password;
     })
     if (user) {
