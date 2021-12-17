@@ -65,7 +65,7 @@ export class UserAddComponent implements OnInit {
   createPassword(userForm: NgForm) {
     if (!userForm.form.controls.password.touched) {
       if (userForm.form.controls.email.valid && userForm.form.controls.email.valid) {
-        this.user.password = this.user.email.split('@')[0] + Math.floor(Math.random() * (999 - 1) + 1);
+        this.user.password = this.user.email.split('@')[0] + Math.floor(Math.random() * (999 - 111) + 111);
       }
     }
   }

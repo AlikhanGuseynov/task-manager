@@ -71,7 +71,6 @@ export class UserListComponent implements OnInit {
         checkingParams = checkingParams + ' ' + this.datePipe.transform(user[key], 'dd-MM-yyyy HH:mm:ss')
       }
     })
-    console.log(checkingParams)
     return JSON.stringify(checkingParams).toLowerCase().includes(filterValue.toLowerCase());
   }
 
