@@ -36,6 +36,7 @@ export class UserListComponent implements OnInit {
   }
 
   getRole(userItem: User) {
+    console.log(userItem?.role)
     if (userItem?.role === RoleEnum.ADMIN) {
       return 'Admin';
     } else if (userItem?.role === RoleEnum.USER) {

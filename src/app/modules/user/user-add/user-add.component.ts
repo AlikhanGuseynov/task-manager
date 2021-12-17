@@ -54,6 +54,7 @@ export class UserAddComponent implements OnInit {
   saveEdit(userForm: NgForm) {
     this.formIsValid = userForm.form.valid;
     if (this.formIsValid) {
+      this.user.role = this.user?.role ? +this.user?.role : undefined;
       const result = this.userServices.putUser(this.user)
       if (result) {
         this.user = new User();
@@ -63,8 +64,9 @@ export class UserAddComponent implements OnInit {
   }
 
   createPassword(userForm: NgForm) {
+    debugger
     if (!userForm.form.controls.password.touched) {
-      if (userForm.form.controls.email.valid && userForm.form.controls.email.valid) {
+      if (userForm.form.controls.email.valid) {
         this.user.password = this.user.email.split('@')[0] + Math.floor(Math.random() * (999 - 111) + 111);
       }
     }
