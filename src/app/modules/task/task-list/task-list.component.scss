@@ -8,8 +8,6 @@
   font-size: 16px;
   line-height: 19px;
   color: #1F4173;
-  padding: 20px;
-  border-bottom: 1px solid #a5b4cb;
 }
 
 .task-item {
@@ -19,6 +17,11 @@
   padding: 10px 25px;
   border-bottom: 1px solid #E6EAF0;
   cursor: pointer;
+  transition: all 300ms ease;
+
+  &.active {
+    background: #E6EAF0;
+  }
 }
 
 .task-detail-body {
@@ -31,11 +34,26 @@
   border: 1px solid #2f2f2f;
   border-radius: 3px;
   padding: 5px 10px;
-  &:hover{
+
+  &:hover {
     background: #f5f5f5;
   }
 }
 
 .user-btn + .user-btn {
   margin-left: 10px;
+}
+
+.add-task-btn {
+  padding: 7px 10px;
+  font-size: 16px;
+  line-height: 17px;
+  border: 1px solid #152c4e;
+  color: #1F4173;
+  border-radius: 3px;
+  transition: all 300ms ease;
+
+  &:hover {
+    background: #f4f9ff;
+  }
 }

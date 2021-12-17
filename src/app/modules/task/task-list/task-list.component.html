@@ -1,12 +1,21 @@
 <div class="task-page">
 
   <div class="box">
-    <p class="task-title">
-      Task list
-    </p>
+    <div class="box-header flex align-items-center justify-content-between">
+      <p class="task-title">
+        Task list
+      </p>
+      <button class="btn add-task-btn">
+        Add task
+      </button>
+    </div>
     <div class="task-list">
       <ng-container *ngFor="let task of taskList">
-        <div class="task-item" (click)="currentTask = task">
+        <div
+          class="task-item"
+          (click)="currentTask = task"
+          [ngClass]="{'active': currentTask.id === task.id}"
+        >
           {{task?.title}}
         </div>
       </ng-container>
@@ -15,9 +24,14 @@
 
   <div class="box">
 
-    <p class="task-title">
-      Task detail
-    </p>
+    <div class="box-header flex align-items-center justify-content-between">
+      <p class="task-title">
+        Task detail
+      </p>
+      <button class="btn add-task-btn">
+        Edit task
+      </button>
+    </div>
 
     <div class="task-detail-body">
 
