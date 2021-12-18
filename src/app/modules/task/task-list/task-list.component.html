@@ -5,7 +5,7 @@
       <p class="task-title">
         Task list
       </p>
-      <button class="btn add-task-btn">
+      <button class="btn add-task-btn" [routerLink]="'/task/add'">
         Add task
       </button>
     </div>
@@ -14,7 +14,7 @@
         <div
           class="task-item"
           (click)="currentTask = task"
-          [ngClass]="{'active': currentTask.id === task.id}"
+          [ngClass]="{'active': currentTask?.id === task?.id}"
         >
           {{task?.title}}
         </div>
@@ -52,7 +52,7 @@
 
       <p class="custom-input-label">Status</p>
       <p class="custom-input-value">
-        {{getStatus(currentTask.status)}}
+        {{getStatus(currentTask?.status)}}
       </p>
 
       <p class="custom-input-label">Creator</p>
@@ -64,7 +64,7 @@
 
       <p class="custom-input-label">Performer</p>
       <p class="custom-input-value">
-        <button *ngFor="let user of currentTask.performer" class="btn user-btn">
+        <button *ngFor="let user of currentTask?.performer" class="btn user-btn">
           {{user?.userName }} {{user?.surname}}
         </button>
       </p>

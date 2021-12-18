@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {filter, map} from "rxjs/operators";
 import {AuthService} from "./auth.service";
 import {TaskMock} from "../mocks/task.mock";
+import {User} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -11,30 +12,25 @@ import {TaskMock} from "../mocks/task.mock";
 export class TaskService {
 
   taskList: Task[] = [...TaskMock];
-  taskList$: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([...TaskMock])
-
-  companyTaskList$: Subject<Task[]> = new Subject<Task[]>()
+  currentUser: User = new User()
 
   constructor(
     private authService: AuthService
   ) {
     this.authService.getCurrentUser().subscribe(e => {
-      // @ts-ignore
-      this.getCompanyTaskList(e.companyId)
+      this.currentUser = e;
     })
   }
 
-  // @ts-ignore
-  getCompanyTaskList(companyId: number): Observable<Task[]> {
-    this.getTasks().pipe(
-      map(results => results.filter(r => r.companyId === companyId))
-    ).subscribe(event => {
-      return new BehaviorSubject(event).asObservable();
+  getCompanyTaskList(companyId: number) {
+    console.log(
+      this.taskList.filter(e => {
+          return e.companyId === companyId;
+        })
+    )
+    return this.taskList.filter(e => {
+      return e.companyId === companyId;
     })
-  }
-
-  getTasks(): Observable<Task[]> {
-    return this.taskList$.asObservable();
   }
 
 

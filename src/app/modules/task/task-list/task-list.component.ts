@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {TaskService} from "../../../services/task.service";
-import {map} from "rxjs/operators";
 import {UserService} from "../../../services/user.service";
 import {AuthService} from "../../../services/auth.service";
 import {Task} from "../../../models/task";
@@ -12,11 +11,11 @@ import {User} from "../../../models/user";
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, AfterViewInit {
 
   taskList: Task[] = [];
-  // @ts-ignore
   currentTask: Task;
+  currentUser: User;
 
   constructor(
     private taskService: TaskService,
@@ -24,23 +23,25 @@ export class TaskListComponent implements OnInit {
     private authService: AuthService
   ) {
     this.authService.getCurrentUser().subscribe(user => {
-      this.taskService.getTasks().pipe(
-        map(results => results.filter(r => r.companyId === user?.companyId))
-      )
-        .subscribe((e) => {
-          this.taskList = e;
-          this.currentTask = this.taskList[0]
-        })
+      this.currentUser = user;
     })
   }
 
+  getTaskList() {
+    this.taskList = this.taskService.getCompanyTaskList(this.currentUser.companyId);
+    this.currentTask = {...this.taskList[0]}
+  }
+
   ngOnInit(): void {
+    this.getTaskList();
+  }
 
-
+  ngAfterViewInit() {
+    this.getTaskList();
   }
 
   // @ts-ignore
-  getStatus(status: TaskStatusEnum): string {
+  getStatus(status: TaskStatusEnum | undefined): string {
     if (status === TaskStatusEnum.NEW) {
       return 'New'
     } else if (status === TaskStatusEnum.DONE) {
