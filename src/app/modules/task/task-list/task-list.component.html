@@ -28,47 +28,111 @@
       <p class="task-title">
         Task detail
       </p>
-      <button class="btn add-task-btn">
+
+      <button class="btn add-task-btn" *ngIf="edit === false" (click)="editToggle()">
         Edit task
       </button>
+
+      <button class="btn add-task-btn" *ngIf="edit === true" (click)="saveChanges()">
+        Save
+      </button>
+
     </div>
 
     <div class="task-detail-body">
 
-      <p class="custom-input-label">Title</p>
-      <p class="custom-input-value">
-        {{currentTask?.title}}
-      </p>
+      <form class="task-form" #taskForm="ngForm">
 
-      <p class="custom-input-label">Description</p>
-      <p class="custom-input-value">
-        {{currentTask?.description}}
-      </p>
+        <p class="custom-input-label">Title</p>
+        <input
+          class="custom-input"
+          [ngClass]="{'no-edit' : !edit}"
+          type="text"
+          [(ngModel)]="currentTask.title"
+          name="title"
+        >
 
-      <p class="custom-input-label">Deadline</p>
-      <p class="custom-input-value">
-        {{currentTask?.deadline | date : 'dd-MM-yyyy'}}
-      </p>
+        <p class="custom-input-label">Description</p>
+        <p class="custom-input-value"
+           *ngIf="!edit"
+        >
+          {{currentTask?.description}}
+        </p>
+        <textarea
+          *ngIf="edit"
+          class="custom-input textarea"
+          name="description"
+          [ngClass]="{'no-edit' : !edit}"
+          [(ngModel)]="currentTask.description"
+        >
+        </textarea>
 
-      <p class="custom-input-label">Status</p>
-      <p class="custom-input-value">
-        {{getStatus(currentTask?.status)}}
-      </p>
+        <p class="custom-input-label">Deadline</p>
+        <p class="custom-input-value" *ngIf="!edit">
+          {{currentTask?.deadline | date : 'dd-MM-yyyy'}}
+        </p>
+        <input
+          *ngIf="edit"
+          type="date"
+          class="custom-input"
+          #deadline='ngModel'
+          [ngModel]="getFormattedDate(currentTask.deadline)"
+          name="deadline"
+          (change)="dateInputHandle()"
+          required
+          [min]="minDate"
+          [ngClass]="{'error' : (deadline.touched && deadline.invalid) || (deadline.invalid && !formIsValid) }"
+        >
 
-      <p class="custom-input-label">Creator</p>
-      <p class="custom-input-value">
-        <button class="btn user-btn">
-          {{currentTask?.creator?.userName }} {{currentTask?.creator?.surname}}
-        </button>
-      </p>
+        <p class="custom-input-label">Status</p>
+        <p class="custom-input-value" *ngIf="!edit">
+          {{getStatus(currentTask?.status)}}
+        </p>
+        <select
+          *ngIf="edit"
+          name="task"
+          [(ngModel)]="currentTask.status"
+          class="custom-input"
+        >
+          <option [value]="taskStatusList.NEW">New</option>
+          <option [value]="taskStatusList.IN_PROGRESS">In progress</option>
+          <option [value]="taskStatusList.UAT">UAT</option>
+          <option [value]="taskStatusList.DONE">Done</option>
+        </select>
 
-      <p class="custom-input-label">Performer</p>
-      <p class="custom-input-value">
-        <button *ngFor="let user of currentTask?.performers" class="btn user-btn">
-          {{user?.userName }} {{user?.surname}}
-        </button>
-      </p>
 
+        <p class="custom-input-label">Creator</p>
+        <p class="custom-input-value">
+          <button class="btn user-btn">
+            {{currentTask?.creator?.userName }} {{currentTask?.creator?.surname}}
+          </button>
+        </p>
+
+        <p class="custom-input-label">Performer</p>
+        <p
+          *ngIf="!edit"
+          class="custom-input-value"
+        >
+          <button *ngFor="let user of currentTask?.performers" class="btn user-btn">
+            {{user?.userName }} {{user?.surname}}
+          </button>
+        </p>
+
+
+        <div
+          class="select-container"
+          *ngIf="edit"
+        >
+          <app-custom-select
+            [list]="userListForSelect"
+            [defaultSelected]="defaultSelectedPerformers"
+            (selectEvent)="performerHandler($event)"
+            [error]="false"
+          ></app-custom-select>
+        </div>
+
+
+      </form>
 
     </div>
 

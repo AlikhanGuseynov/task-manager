@@ -24,6 +24,12 @@
   &.error {
     border: 1px solid #F44336;
   }
+
+  &.no-edit {
+    border: 1px solid transparent;
+    background: transparent;
+  }
+
 }
 
 .error-text {
@@ -96,7 +102,7 @@ body {
   margin-left: 0;
 }
 
-.box-header{
+.box-header {
   padding: 20px;
   border-bottom: 1px solid #a5b4cb;
 }

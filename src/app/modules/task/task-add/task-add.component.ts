@@ -23,7 +23,6 @@ export class TaskAddComponent implements OnInit {
   userList: User[];
   userListForSelect: ISelect = {
     list: [],
-    defaultChecked: [],
   };
   formIsValid = true;
   selectedPerformers: ISelectItem[] = [];

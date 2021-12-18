@@ -19,6 +19,7 @@ export interface ISelectItem {
 export class CustomSelectComponent implements OnInit, OnChanges {
 
   @Input() list: ISelect;
+  @Input() defaultSelected: number[] | string[] = [];
   @Input() error: boolean;
   @Output() selectEvent: EventEmitter<ISelectItem[]> = new EventEmitter<ISelectItem[]>();
   filterInput = '';
@@ -67,7 +68,7 @@ export class CustomSelectComponent implements OnInit, OnChanges {
       item.checked = false;
     });
     this.list?.list?.forEach(item => {
-      this.list.defaultChecked?.map((e: number | string) => {
+      this.defaultSelected?.map((e: number | string) => {
         if (item.value === e) {
           this.selectedList.push(item);
         }
