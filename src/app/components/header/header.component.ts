@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {User} from "../../models/user";
+import {RoleEnum} from "../../enums/role.enum";
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,7 @@ import {User} from "../../models/user";
 export class HeaderComponent implements OnInit {
 
   user: User | undefined;
+  isAdmin = false;
 
   constructor(
     private authService: AuthService
@@ -19,6 +21,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getCurrentUser().subscribe(event => {
       this.user = event;
+      this.isAdmin = this.user.role === RoleEnum.ADMIN
     })
   }
 

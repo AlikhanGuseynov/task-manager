@@ -4,19 +4,13 @@
   <div class="table">
 
     <div class="table-top">
-      <div class="filter-container">
-        <button class="btn filter-btn">
-          <img src="assets/img/filter.svg" alt="">
-          Filter
-        </button>
-      </div>
 
       <div class="search-container">
         <img src="assets/img/search.svg" alt="">
         <input #filterInput (input)="filter(filterInput)" type="text" class="search-input" placeholder="Search Users by Name, Email or Date">
       </div>
 
-      <button class="btn add-user-btn" [routerLink]="'/user/add'">
+      <button *ngIf="isAdmin" class="btn add-user-btn" [routerLink]="'/user/add'">
         Add user
       </button>
 

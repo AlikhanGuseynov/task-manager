@@ -16,6 +16,7 @@ export class UserListComponent implements OnInit, AfterViewInit {
   userList: User[] | undefined;
   userListCopy: User[] | undefined;
   user = new User();
+  isAdmin = false;
 
   constructor(
     private userService: UserService,
@@ -25,9 +26,9 @@ export class UserListComponent implements OnInit, AfterViewInit {
     this.authService.getCurrentUser()
       .subscribe(user => {
         this.user = user;
+        this.isAdmin = this.user.role === RoleEnum.ADMIN;
       })
     this.getUserList()
-
   }
 
   ngOnInit(): void {
@@ -36,7 +37,6 @@ export class UserListComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.getUserList()
-    console.log(0)
   }
 
   getUserList() {

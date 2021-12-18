@@ -19,7 +19,8 @@
           Tasks
         </a>
       </li>
-      <li class="nav-list-item">
+
+      <li class="nav-list-item" *ngIf="isAdmin">
         <a
           [routerLink]="'/user'"
           [routerLinkActive]="'active'"
@@ -28,6 +29,7 @@
           Users
         </a>
       </li>
+
     </ul>
   </nav>
 
