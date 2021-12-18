@@ -13,7 +13,7 @@
       <ng-container *ngFor="let task of taskList">
         <div
           class="task-item"
-          (click)="currentTask = task"
+          (click)="selectTask(task)"
           [ngClass]="{'active': currentTask?.id === task?.id}"
         >
           {{task?.title}}
@@ -28,26 +28,34 @@
       <p class="task-title">
         Task detail
       </p>
-
       <button class="btn add-task-btn" *ngIf="edit === false" (click)="editToggle()">
         Edit task
       </button>
-
-      <button class="btn add-task-btn" *ngIf="edit === true" (click)="saveChanges()">
-        Save
-      </button>
-
+      <div class="flex align-items-center" *ngIf="edit === true">
+        <button class="btn add-task-btn cancel" (click)="cancelChanges(currentTask.id)">
+          Cancel
+        </button>
+        <button class="btn add-task-btn" (click)="saveChanges(taskForm)">
+          Save
+        </button>
+      </div>
     </div>
 
     <div class="task-detail-body">
-
       <form class="task-form" #taskForm="ngForm">
 
         <p class="custom-input-label">Title</p>
         <input
           class="custom-input"
-          [ngClass]="{'no-edit' : !edit}"
+          [disabled]="!edit"
+          [ngClass]="{
+          'no-edit' : !edit,
+          'error' : title.invalid && !formIsValid
+          }"
           type="text"
+          required
+          minlength="3"
+          #title="ngModel"
           [(ngModel)]="currentTask.title"
           name="title"
         >
@@ -62,8 +70,11 @@
           *ngIf="edit"
           class="custom-input textarea"
           name="description"
-          [ngClass]="{'no-edit' : !edit}"
+          required
+          minlength="3"
+          #description="ngModel"
           [(ngModel)]="currentTask.description"
+          [ngClass]="{'error' : description.invalid && !formIsValid}"
         >
         </textarea>
 
@@ -78,7 +89,7 @@
           #deadline='ngModel'
           [ngModel]="getFormattedDate(currentTask.deadline)"
           name="deadline"
-          (change)="dateInputHandle()"
+          (change)="dateInputHandle($event)"
           required
           [min]="minDate"
           [ngClass]="{'error' : (deadline.touched && deadline.invalid) || (deadline.invalid && !formIsValid) }"
@@ -125,9 +136,9 @@
         >
           <app-custom-select
             [list]="userListForSelect"
+            [error]="currentTask.performers.length === 0 && formIsValid"
             [defaultSelected]="defaultSelectedPerformers"
             (selectEvent)="performerHandler($event)"
-            [error]="false"
           ></app-custom-select>
         </div>
 

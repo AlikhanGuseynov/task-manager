@@ -34,7 +34,6 @@ export class CustomSelectComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.initSelect();
   }
 
   search(event: any): void {

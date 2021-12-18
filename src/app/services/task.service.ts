@@ -30,5 +30,18 @@ export class TaskService {
     this.taskList.push({...task})
   }
 
+  editTask(task: Task): boolean {
+    let changed = false;
+    this.taskList = this.taskList.map(e => {
+      if (e.id === task.id) {
+        e = task;
+        changed = true
+      }
+      return e;
+    })
+    console.log(this.taskList)
+    return changed;
+  }
+
 
 }

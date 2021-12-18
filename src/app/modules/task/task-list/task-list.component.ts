@@ -7,6 +7,9 @@ import {TaskStatusEnum} from "../../../enums/task-status.enum";
 import {User} from "../../../models/user";
 import {DatePipe} from "@angular/common";
 import {ISelect, ISelectItem} from "../../../components/custom-select/custom-select.component";
+import {NgForm} from "@angular/forms";
+import {ToastTypeEnum} from "../../../enums/toast-type.enum";
+import {ToastService} from "../../../services/toast.service";
 
 @Component({
   selector: 'app-task-list',
@@ -34,6 +37,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     private userService: UserService,
     private authService: AuthService,
     private datePipe: DatePipe,
+    private toastService: ToastService,
   ) {
     this.authService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
@@ -50,6 +54,9 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   getTaskList() {
     this.taskList = this.taskService.getCompanyTaskList(this.currentUser.companyId);
     this.currentTask = {...this.taskList[0]}
+    this.defaultSelectedPerformers = this.currentTask.performers.map(item => {
+      return item.id
+    })
   }
 
   ngOnInit(): void {
@@ -61,7 +68,6 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     this.getTaskList();
   }
 
-  // @ts-ignore
   getStatus(status: TaskStatusEnum | undefined): string {
     if (status === TaskStatusEnum.NEW) {
       return 'New'
@@ -71,40 +77,70 @@ export class TaskListComponent implements OnInit, AfterViewInit {
       return 'In progress'
     } else if (status === TaskStatusEnum.UAT) {
       return 'UAT'
-    }
-  }
-
-  getPerformer(performer: User[]) {
-    // @ts-ignore
-    return performer.reduce(reducer, '')
-
-    function reducer(previousValue: string, currentValue: User) {
-      return previousValue + ' ,' + currentValue.userName
+    } else {
+      return 'No status'
     }
   }
 
   performerHandler(event: ISelectItem[]) {
     this.selectedPerformers = event;
     this.formIsValid = true;
+    this.assignPerformers();
   }
 
+  selectTask(task: Task) {
+    this.cancelChanges(task.id);
+    this.currentTask = {...task};
+    this.defaultSelectedPerformers = this.currentTask.performers.map(item => {
+      return item.id
+    })
+  }
 
-  saveChanges() {
-    this.edit = false;
+  saveChanges(taskForm: NgForm) {
+    this.formIsValid = taskForm.form.valid && this.currentTask.performers.length > 0;
+    if (this.formIsValid) {
+      this.edit = false;
+      this.currentTask.status = Number(this.currentTask.status);
+      const changed = this.taskService.editTask(this.currentTask)
+      if (changed) {
+        this.toastService.createToast('Task was changed', ToastTypeEnum.SUCCESS);
+        this.taskList = this.taskService.getCompanyTaskList(this.currentUser.companyId);
+      } else {
+        this.toastService.createToast('Error', ToastTypeEnum.ERROR)
+      }
+      this.formIsValid = true;
+    }
+    this.assignPerformers();
   }
 
   getFormattedDate(date: number): string {
     return <string>this.datePipe.transform(new Date(date), 'yyyy-MM-dd');
   }
 
-  dateInputHandle() {
-
+  dateInputHandle(event: Event) {
+    // @ts-ignore
+    this.currentTask.deadline = new Date(event.target.value).getTime();
   }
 
   editToggle() {
     this.edit = true;
-    this.defaultSelectedPerformers = this.currentTask.performers.map(item => {
-      return item.id
+  }
+
+  assignPerformers() {
+    this.currentTask.performers = [];
+    this.userList.map(a => {
+      this.selectedPerformers.map(b => {
+        if (a.id === b.value) {
+          this.currentTask.performers.push(a);
+        }
+      })
+    })
+  }
+
+  cancelChanges(taskId: number) {
+    this.edit = false;
+    this.currentTask = <Task>this.taskList.find(e => {
+      return e.id === taskId
     })
   }
 }
