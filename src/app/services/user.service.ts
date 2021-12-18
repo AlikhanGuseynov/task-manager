@@ -11,71 +11,58 @@ import {ToastTypeEnum} from "../enums/toast-type.enum";
 export class UserService {
 
   userList: User[] = [...UserMock];
-  userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>(this.userList);
 
   constructor(
     private toastService: ToastService,
   ) {
   }
 
-  getUsers(): Observable<User[]> {
-    return this.userList$.asObservable();
-  }
-
   getUserList(): User[] {
     return this.userList;
+  }
+
+  getUserListByCompanyId(companyId: number): User[] {
+    return this.userList.filter(user => {
+      return user.companyId === companyId
+    })
   }
 
   setUser(user: User): boolean {
     const sameUser = this.userList.find(e => {
       return e.email === user.email
     })
-    this.userList.map(e => {
-      if (e.email === user.email) {
-        console.log(e.email, user.email)
-      }
-    })
-    user.role = user?.role ? +user?.role : undefined;
     if (sameUser) {
-      this.toastService.createToast('This user already exist.', ToastTypeEnum.INFO)
-      return false
+      this.toastService.createToast('This user already exist.', ToastTypeEnum.ERROR)
+      return false;
     } else {
-      this.userList.push({...user});
-      this.userList$.next(this.userList);
-      this.toastService.createToast('User was added.')
+      this.userList.push({...user})
+      console.log(this.userList)
+      this.toastService.createToast('New user vas add.', ToastTypeEnum.SUCCESS)
       return true;
     }
   }
 
-  putUser(user: User) {
-    let isChanged = false;
+  putUser(user: User): boolean {
+    let userIsChange = false;
     this.userList.map(event => {
-      if (event.id === user.id) {
+      if (event.companyId === user.companyId && event.id === user.id) {
         event = user;
-        isChanged = true;
+        userIsChange = true;
       }
     })
-    if (isChanged) {
-      this.userList$.next(this.userList);
-      this.toastService.createToast('User was changed success.', ToastTypeEnum.SUCCESS)
-      return true;
-    } else {
-      this.toastService.createToast('We have problem to change  user date.', ToastTypeEnum.ERROR)
-      return false;
-    }
+    return userIsChange;
   }
 
   deleteUserById(id: number) {
-    this.userList = this.userList.filter(item => {
-      return item.id !== id
+    this.userList.filter(user => {
+      return user.id !== id;
     })
-    this.userList$.next(this.userList)
   }
 
-  getUserById(id: number): User | undefined {
-    return this.userList.find((e: User) => {
-      return e.id === id;
-    });
+  getUserById(userId: number): User | undefined {
+    return this.userList.find(user => {
+      return user.id === userId
+    })
   }
 
 

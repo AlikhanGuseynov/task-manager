@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {RoleEnum} from "../../../enums/role.enum";
@@ -11,7 +11,7 @@ import {map} from "rxjs/operators";
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, AfterViewInit {
 
   userList: User[] | undefined;
   userListCopy: User[] | undefined;
@@ -26,21 +26,23 @@ export class UserListComponent implements OnInit {
       .subscribe(user => {
         this.user = user;
       })
+    this.getUserList()
+
   }
 
   ngOnInit(): void {
     this.getUserList()
   }
 
+  ngAfterViewInit() {
+    this.getUserList()
+    console.log(0)
+  }
+
   getUserList() {
-    this.userService.getUsers()
-      .pipe(
-        map(result => result.filter(e => e.companyId === this.user.companyId))
-      )
-      .subscribe(event => {
-        this.userList = event;
-        this.userListCopy = event;
-      })
+    const userList = this.userService.getUserListByCompanyId(this.user.companyId);
+    this.userList = [...userList];
+    this.userListCopy = [...userList];
   }
 
   getSolvedTasks(a: number | undefined, b: number | undefined) {

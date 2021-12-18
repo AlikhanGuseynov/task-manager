@@ -11,9 +11,9 @@
     <img src="assets/img/close-toast-btn.svg" alt="">
   </button>
 
-  <img [hidden]="!(toast?.type === toastTypeEnum.SUCCESS || !toast?.type)" src="assets/img/success-toast.svg" alt="">
-  <img [hidden]="!(toast?.type === toastTypeEnum.ERROR)" src="assets/img/error-toast.svg" alt="">
-  <img [hidden]="!(toast?.type === toastTypeEnum.INFO)" src="assets/img/info-toast.svg" alt="">
+  <img *ngIf="(toast?.type === toastTypeEnum.SUCCESS)" src="assets/img/success-toast.svg" alt="">
+  <img *ngIf="(toast?.type === toastTypeEnum.ERROR)" src="assets/img/error-toast.svg" alt="">
+  <img *ngIf="(toast?.type === toastTypeEnum.INFO)" src="assets/img/info-toast.svg" alt="">
 
   <p class="toast-text">
     {{toast?.text}}

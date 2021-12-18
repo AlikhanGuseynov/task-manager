@@ -48,7 +48,6 @@
       required
       minlength="3"
       [(ngModel)]="user.email"
-      (input)="createPassword(userForm)"
       [ngClass]="{'error' : (email.touched && email.invalid) || (email.invalid && !formIsValid)}"
       placeholder="email"
     >
