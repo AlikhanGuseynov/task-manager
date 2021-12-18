@@ -128,7 +128,6 @@ export class TaskListComponent implements OnInit, AfterViewInit {
       }
       this.formIsValid = true;
     }
-    this.assignPerformers();
   }
 
   getFormattedDate(date: number): string {
@@ -142,6 +141,9 @@ export class TaskListComponent implements OnInit, AfterViewInit {
 
   editToggle() {
     this.edit = true;
+    this.defaultSelectedPerformers = this.currentTask.performers.map(item => {
+      return item.id
+    })
   }
 
   assignPerformers() {

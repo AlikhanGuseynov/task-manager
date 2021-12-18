@@ -129,14 +129,13 @@
           </button>
         </p>
 
-
         <div
           class="select-container"
           *ngIf="edit"
         >
           <app-custom-select
             [list]="userListForSelect"
-            [error]="currentTask.performers.length === 0 && formIsValid"
+            [error]="currentTask.performers.length === 0 && !formIsValid"
             [defaultSelected]="defaultSelectedPerformers"
             (selectEvent)="performerHandler($event)"
           ></app-custom-select>
