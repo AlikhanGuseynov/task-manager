@@ -14,7 +14,7 @@ export class UserService {
   userList$: BehaviorSubject<User[]> = new BehaviorSubject<User[]>(this.userList);
 
   constructor(
-    private toastService: ToastService
+    private toastService: ToastService,
   ) {
   }
 

@@ -3,6 +3,8 @@ import {User} from "../../../models/user";
 import {UserService} from "../../../services/user.service";
 import {RoleEnum} from "../../../enums/role.enum";
 import {DatePipe} from "@angular/common";
+import {AuthService} from "../../../services/auth.service";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-user-list',
@@ -13,11 +15,17 @@ export class UserListComponent implements OnInit {
 
   userList: User[] | undefined;
   userListCopy: User[] | undefined;
+  user = new User();
 
   constructor(
     private userService: UserService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private authService: AuthService
   ) {
+    this.authService.getCurrentUser()
+      .subscribe(user => {
+        this.user = user;
+      })
   }
 
   ngOnInit(): void {
@@ -25,10 +33,14 @@ export class UserListComponent implements OnInit {
   }
 
   getUserList() {
-    this.userService.getUsers().subscribe(event => {
-      this.userList = event;
-      this.userListCopy = event;
-    })
+    this.userService.getUsers()
+      .pipe(
+        map(result => result.filter(e => e.companyId === this.user.companyId))
+      )
+      .subscribe(event => {
+        this.userList = event;
+        this.userListCopy = event;
+      })
   }
 
   getSolvedTasks(a: number | undefined, b: number | undefined) {
@@ -36,7 +48,6 @@ export class UserListComponent implements OnInit {
   }
 
   getRole(userItem: User) {
-    console.log(userItem?.role)
     if (userItem?.role === RoleEnum.ADMIN) {
       return 'Admin';
     } else if (userItem?.role === RoleEnum.USER) {

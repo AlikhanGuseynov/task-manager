@@ -54,7 +54,7 @@ export class AuthService {
     this.isLogin$.next(this.isLogin)
   }
 
-  getCurrentUser(): Observable<User | undefined> {
+  getCurrentUser(): Observable<User> {
     return this.currentUser$.asObservable()
   }
 
