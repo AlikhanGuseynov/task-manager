@@ -29,11 +29,10 @@
         class="custom-input"
         placeholder="Number"
         name="mobile"
-        minlength="3"
         required
       >
       <p class="error-text" *ngIf="(mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid)">
-        Mobile number name must include min 3 characters.
+        Enter mobile number.
       </p>
 
       <input
@@ -65,17 +64,6 @@
       <p class="error-text" *ngIf="(userName.touched && userName.invalid) || (userName.invalid && !formIsValid)">
         User name must include min 3 characters.
       </p>
-
-      <select
-        #role='ngModel'
-        [(ngModel)]="user.role"
-        [ngClass]="{'error' : (userName.touched && userName.invalid) || (userName.invalid && !formIsValid) }"
-        name="role"
-        required
-      >
-        <option [value]="ROLE_ENUM.ADMIN">Admin</option>
-        <option [value]="ROLE_ENUM.USER">User</option>
-      </select>
 
       <input
         #email="ngModel"

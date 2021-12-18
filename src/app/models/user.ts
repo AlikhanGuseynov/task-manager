@@ -45,7 +45,7 @@ export class User {
     this.position = position ? position : '';
     this.department = department ? department : '';
     this.lastLogin = lastLogin ? lastLogin : -1;
-    this.role = role ? role : -1;
+    this.role = role ? role : undefined;
     this.id = id ? id : -1;
     this.taskCounter = id ? id : 0;
     this.solvedTaskCounter = id ? id : 0;
