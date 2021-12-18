@@ -4,6 +4,7 @@ import {User} from "../models/user";
 import {Login} from "../models/login";
 import {UserService} from "./user.service";
 import {UserMock} from "../mocks/user.mock";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthService {
   currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(new User())
 
   constructor(
-    private userServices: UserService
+    private userServices: UserService,
+    private router: Router
   ) {
     const defaultUser = UserMock[0];
     this.login({email: defaultUser.email, password: defaultUser.password})
@@ -33,10 +35,10 @@ export class AuthService {
   }
 
   logOut() {
-    // this.currentUser = null;
+    this.currentUser = new User();
     this.currentUser$.next(this.currentUser)
-    this.isLogin = false;
-    this.isLogin$.next(this.isLogin)
+    this.setIsLogin(false)
+    this.router.navigate(['/auth/login'])
   }
 
   getIsLogin(): Observable<boolean> {

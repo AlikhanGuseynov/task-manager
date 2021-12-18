@@ -33,28 +33,28 @@
     </ul>
   </nav>
 
-  <div class="profile-block">
+  <div class="profile-block" (click)="isOpenMenu = !isOpenMenu">
 
     <div class="user-data">
-
       <p class="user-name">
         {{user?.userName}}
       </p>
       <p class="company-name">
         {{user?.companyName}}
       </p>
-
     </div>
-
-
-    <div class="avatar center" (click)="logOut()">
+    <div class="avatar center">
       <img src="assets/img/avatar.svg" alt="">
     </div>
-
     <button class="btn center">
       <img src="assets/img/header-arrow.svg" alt="">
     </button>
 
+    <button class="btn logout-container" (click)="logOut()" [ngClass]="{'active' : isOpenMenu}">
+      <img src="assets/img/logout.svg" alt="">
+      <span>Logout</span>
+    </button>
   </div>
+
 
 </header>

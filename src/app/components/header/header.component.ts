@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   user: User | undefined;
   isAdmin = false;
+  isOpenMenu = false;
 
   constructor(
     private authService: AuthService
@@ -25,9 +26,7 @@ export class HeaderComponent implements OnInit {
     })
   }
 
-
   logOut() {
-    const user: User = new User();
-    this.authService.setCurrentUser(user)
+    this.authService.logOut()
   }
 }
