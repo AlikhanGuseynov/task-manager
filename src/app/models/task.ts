@@ -10,6 +10,7 @@ export class Task {
   status: TaskStatusEnum;
   creator: User;
   performers: User[];
+  createDate: number;
 
   constructor(
     id?: number,
@@ -17,6 +18,7 @@ export class Task {
     title?: string,
     description?: string,
     deadline?: number,
+    createDate?: number,
     status?: TaskStatusEnum,
     creator?: User,
     performers?: User[],
@@ -26,6 +28,7 @@ export class Task {
     this.title = title ? title : ''
     this.description = description ? description : ''
     this.deadline = deadline ? deadline : -1
+    this.createDate = createDate ? createDate : -1
     this.status = status ? status : -1
     this.creator = creator ? creator : new User()
     this.performers = performers ? performers : [new User()]

@@ -1,9 +1,11 @@
 <div class="dashboard-page">
 
   <div class="user-list box">
-    <p class="users-title">
-      Users
-    </p>
+    <div class="box-header">
+      <p class="users-title">
+        Users
+      </p>
+    </div>
 
     <table cellspacing="0" class="table">
 
@@ -25,10 +27,7 @@
           Department
         </th>
         <th class="tr">
-          Status
-        </th>
-        <th class="tr">
-          Tasks
+          Last login
         </th>
 
       </tr>
@@ -37,14 +36,26 @@
       <tbody>
 
       <ng-container *ngFor="let user of userList; let i = index">
-        <tr (click)="activeUser = i" class="tr" [ngClass]="{'active' : activeUser === i}">
+        <tr (click)="selectActiveUser(user)" class="tr" [ngClass]="{'active' : activeUser?.id === user?.id}">
           <td class="td">{{i}}</td>
-          <td class="td">{{user}}</td>
-          <td class="td">{{user}}</td>
-          <td class="td">{{user}}</td>
-          <td class="td">{{user}}</td>
-          <td class="td">{{user}}</td>
-          <td class="td">{{user}}</td>
+          <td class="td">{{user.userName}} {{user.surname}}</td>
+          <td class="td">
+            {{getRole(user)}}
+          </td>
+          <td class="td">
+            {{user?.position}}
+          </td>
+          <td class="td">
+            {{user?.department}}
+          </td>
+          <td class="td">
+            <p class="last-login">
+              {{getDate(user?.lastLogin)}}
+            </p>
+            <p class="last-login">
+              {{getTime(user?.lastLogin)}}
+            </p>
+          </td>
         </tr>
       </ng-container>
 
@@ -55,12 +66,17 @@
   </div>
 
   <div class="tasks-list box">
-    <p class="task-title">
-      Tasks
-    </p>
-
+    <div class="box-header">
+      <p class="task-title">
+        Tasks
+      </p>
+    </div>
 
     <div class="task-list">
+
+      <p class="note" *ngIf="taskList?.length === 0">
+        This user don`t have task.
+      </p>
 
       <ng-container *ngFor="let task of taskList; let i = index">
         <div
@@ -70,22 +86,36 @@
         >
           <div class="task-item-header">
             <p class="task-header">
-              {{task}}
+              {{task.title}}
             </p>
             <div>
-              <button class="btn go-to-btn">Go to</button>
+              <button class="btn go-to-btn"
+                (click)="goToDetail(task)"
+              >
+                Go to detail</button>
             </div>
             <button class="btn center">
               <img class="task-header-arrow" src="assets/img/header-arrow.svg" alt="">
             </button>
           </div>
           <div class="task-item-body">
-            <ul>
-              <li>status</li>
+            <ul class="task-item-label">
+              <li>Status</li>
               <li>Creator</li>
-              <li>Performer</li>
               <li>Deadline</li>
               <li>Create Date</li>
+            </ul>
+            <ul class="task-item-value">
+              <li>
+                {{getStatus(task.status)}}
+              </li>
+              <li>{{task.creator.userName}} {{task.creator.surname}}</li>
+              <li>
+                {{task?.deadline | date : 'dd-MM-yyyy'}}
+              </li>
+              <li>
+                {{task?.createDate | date : 'dd-MM-yyyy'}}
+              </li>
             </ul>
           </div>
         </div>

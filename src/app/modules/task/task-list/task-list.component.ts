@@ -10,6 +10,8 @@ import {ISelect, ISelectItem} from "../../../components/custom-select/custom-sel
 import {NgForm} from "@angular/forms";
 import {ToastTypeEnum} from "../../../enums/toast-type.enum";
 import {ToastService} from "../../../services/toast.service";
+import {ActivePerfRecorder} from "@angular/compiler-cli/src/ngtsc/perf";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-task-list',
@@ -31,6 +33,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   };
   selectedPerformers: ISelectItem[] = [];
   defaultSelectedPerformers: number[] | string[] = [];
+  taskId: number;
 
   constructor(
     private taskService: TaskService,
@@ -38,6 +41,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     private authService: AuthService,
     private datePipe: DatePipe,
     private toastService: ToastService,
+    private route: ActivatedRoute
   ) {
     this.authService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
@@ -49,6 +53,17 @@ export class TaskListComponent implements OnInit, AfterViewInit {
         displayText: e?.userName + e?.surname
       }
     })
+    this.route.queryParams.subscribe(queryParams => {
+      if (queryParams?.taskId) {
+        this.taskId = Number(queryParams?.taskId);
+      }
+    })
+  }
+
+  openTaskById() {
+    this.currentTask = <Task>this.taskList.find(task => {
+      return task.id === this.taskId;
+    })
   }
 
   getTaskList() {
@@ -57,6 +72,9 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     this.defaultSelectedPerformers = this.currentTask.performers.map(item => {
       return item.id
     })
+    if (this.taskId) {
+      this.openTaskById();
+    }
   }
 
   ngOnInit(): void {

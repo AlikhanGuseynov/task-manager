@@ -12,6 +12,7 @@ export const TaskMock: Task[] = [
     deadline: 1639698153860,
     status: TaskStatusEnum.NEW,
     creator: UserMock[0],
+    createDate: 1628568153860,
     performers: [UserMock[1], UserMock[2], UserMock[3]],
   },
   {
@@ -22,6 +23,7 @@ export const TaskMock: Task[] = [
     deadline: 1639689331966,
     status: TaskStatusEnum.DONE,
     creator: UserMock[2],
+    createDate: 1628568153860,
     performers: [UserMock[1], UserMock[3]],
   },
   {
@@ -32,6 +34,7 @@ export const TaskMock: Task[] = [
     deadline: 1639689331966,
     status: TaskStatusEnum.UAT,
     creator: UserMock[0],
+    createDate: 1628568153860,
     performers: [UserMock[1], UserMock[2]],
   },
   {
@@ -42,6 +45,7 @@ export const TaskMock: Task[] = [
     deadline: 1639689331966,
     status: TaskStatusEnum.IN_PROGRESS,
     creator: UserMock[1],
+    createDate: 1628568153860,
     performers: [UserMock[2], UserMock[3]],
   },
   {
@@ -52,6 +56,7 @@ export const TaskMock: Task[] = [
     deadline: 1639689331966,
     status: TaskStatusEnum.UAT,
     creator: UserMock[0],
+    createDate: 1628568153860,
     performers: [UserMock[3]],
   },
 ]

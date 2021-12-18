@@ -16,16 +16,14 @@
   font-size: 16px;
   line-height: 19px;
   color: #1F4173;
-  padding-left: 32px;
-  padding-bottom: 20px;
 }
 
 .user-list {
-  padding: 32px 0;
+  padding: 0 0 32px;
 }
 
 .tasks-list {
-  padding: 32px 0;
+  padding: 0 0 32px;
 }
 
 .table {
@@ -62,7 +60,7 @@ table {
 
 .task-list {
   max-height: 500px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .task-item {
@@ -79,10 +77,6 @@ table {
   grid-template-columns: 1fr 200px 20px;
 }
 
-.task-item-body {
-  margin: 0 15px;
-}
-
 .go-to-btn {
   background: #E6EAF0;
   border-radius: 5px;
@@ -93,9 +87,16 @@ table {
 }
 
 .task-item-body {
+  margin: 0 15px;
   height: 0;
   overflow: hidden;
   transition: all 300ms ease;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.task-header {
+  font-weight: 600;
 }
 
 .task-item {
@@ -103,7 +104,7 @@ table {
   &.active {
 
     .task-item-body {
-      height: 100px;
+      height: 90px;
     }
 
     .task-item-header {
@@ -117,11 +118,30 @@ table {
   }
 }
 
+.last-login {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #6E6893;
+}
 
+.task-item-label li {
+  font-size: 15px;
+  color: #424242;
+  font-weight: 600;
+}
 
+.task-item-value li {
+  font-size: 15px;
+  color: #424242;
+  font-weight: 400;
+}
 
-
-
+.note {
+  font-size: 16px;
+  color: #424242;
+  text-align: center;
+}
 
 
 
