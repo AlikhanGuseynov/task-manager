@@ -1,36 +1,45 @@
-<input (input)="search($event)" type="text">
+<div class="select-container" appClickOutSide (clickOutside)="selectIsOpen = false">
 
-<ul>
-  <ng-container *ngFor="let item of list">
-    <li [ngStyle]="{'display': item.text.indexOf(filterInput) > -1? 'block' : 'none'}"
+  <input (input)="search($event)" (focusin)="selectIsOpen = true"
+         type="text"
+         class="custom-input">
+
+  <ul class="select-list" *ngIf="selectIsOpen">
+    <ng-container *ngFor="let item of list?.list">
+      <li
+        [ngStyle]="{'display': filter(item.displayText)? 'flex' : 'none'}"
         [ngClass]="isChecked(item)? 'selected' : 'true'"
+        class="select-item"
+      >
+        <input
+          (change)="checkboxHandle($event, item)"
+          type="checkbox"
+          [checked]="isChecked(item)"
+          [id]="item.value + '_select'"
+          [style]="{'display' : multiSelect? 'block' : 'none'}"
+        >
+        <label
+          [for]="item.value + '_select'"
+        >
+          {{item.displayText}}
+        </label>
+      </li>
+    </ng-container>
+  </ul>
+
+  <ul *ngIf="multiSelect" class="selected-list">
+    <li
+      class="selected-list-item"
+      *ngFor="let some of selectedList"
+      (click)="deleteFromList(some)"
     >
-      <input
-        (change)="checkboxHandle($event, item)"
-        type="checkbox"
-        [checked]="isChecked(item)"
-        [id]="item.value + '_select'"
-        [style]="{'display' : multiSelect? 'block' : 'none'}"
-      >
-      <label
-        [for]="item.value + '_select'"
-      >
-        {{item.text}}
-      </label>
+      {{some.displayText}}
     </li>
-  </ng-container>
-</ul>
+  </ul>
 
-<ul *ngIf="multiSelect">
-  <li
-    *ngFor="let some of selectedList"
-    (click)="deleteFromList(some)"
-  >
-    {{some.text}}
-  </li>
-</ul>
+  <button *ngIf="multiSelect" (click)="save()">
+    SAVE
+  </button>
 
 
-<button *ngIf="multiSelect" (click)="save()">
-  SAVE
-</button>
+</div>

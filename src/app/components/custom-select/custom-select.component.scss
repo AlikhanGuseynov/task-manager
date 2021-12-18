@@ -2,6 +2,30 @@ label, input {
   cursor: pointer;
 }
 
+.select-container {
+  position: relative;
+}
+
+.select-list {
+  position: absolute;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 3px;
+  border: 1.2px solid #D4D6D9;
+  background: #fff;
+}
+
+.select-item {
+  padding: 10px;
+  color: #424242;
+  display: flex;
+  align-items: center;
+
+  input {
+    margin-right: 10px;
+  }
+}
+
 .selected {
-  background: #ccc;
+  font-weight: 600;
 }

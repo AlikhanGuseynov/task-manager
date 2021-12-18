@@ -2,11 +2,13 @@ import {NgModule} from '@angular/core';
 import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CustomSelectComponent} from "../../components/custom-select/custom-select.component";
+import {ClickOutSideDirective} from "../../directives/click-out-side.directive";
 
 
 @NgModule({
   declarations: [
-    CustomSelectComponent
+    CustomSelectComponent,
+    ClickOutSideDirective
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import {CustomSelectComponent} from "../../components/custom-select/custom-selec
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    CustomSelectComponent
+    CustomSelectComponent,
+    ClickOutSideDirective
   ]
 })
 export class SharedModule {

@@ -3,6 +3,7 @@ import {TaskStatusEnum} from "../../../enums/task-status.enum";
 import {UserService} from "../../../services/user.service";
 import {AuthService} from "../../../services/auth.service";
 import {User} from "../../../models/user";
+import {ISelect} from "../../../components/custom-select/custom-select.component";
 
 @Component({
   selector: 'app-task-add',
@@ -14,7 +15,10 @@ export class TaskAddComponent implements OnInit {
   taskStatusList = TaskStatusEnum;
   isEdit = false;
   currentUser: User;
-  companyUserList: User[];
+  userList: User[];
+  userListForSelect: ISelect = {
+    list: []
+  };
 
   constructor(
     private userService: UserService,
@@ -25,7 +29,13 @@ export class TaskAddComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
-      this.companyUserList = this.userService.getUserListByCompanyId(this.currentUser.companyId);
+      this.userList = this.userService.getUserListByCompanyId(this.currentUser.companyId);
+      this.userListForSelect.list = this.userList?.map(e => {
+        return {
+          value: e.id,
+          displayText: e.userName + e.surname
+        }
+      })
     })
   }
 

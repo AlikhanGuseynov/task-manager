@@ -1,5 +1,16 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
+export interface ISelect {
+  list: ISelectItem[];
+  defaultChecked?: number[] | string[];
+}
+
+export interface ISelectItem {
+  value: number | string,
+  displayText: string;
+  checked?: boolean;
+}
+
 @Component({
   selector: 'app-custom-select',
   templateUrl: './custom-select.component.html',
@@ -7,14 +18,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class CustomSelectComponent implements OnInit {
 
-
-  @Input() list: any[];
+  @Input() list: ISelect;
   @Input() multiSelect = false;
   @Input() defaultSelectedIndex: any[];
   @Output() select: EventEmitter<any[]> = new EventEmitter<any[]>();
   filterInput = '';
-  selectedList: any[] = [];
-  copyList: { data: any, checked: false }[];
+  selectedList: ISelectItem[] = [];
+  selectIsOpen = false;
 
   constructor() {
   }
@@ -29,6 +39,10 @@ export class CustomSelectComponent implements OnInit {
 
   search(event: any): void {
     this.filterInput = event.target.value;
+  }
+
+  filter(text: string): boolean {
+    return text.toLowerCase().includes(this.filterInput.toLowerCase());
   }
 
   checkboxHandle(event: any, item: any) {
@@ -52,11 +66,11 @@ export class CustomSelectComponent implements OnInit {
   }
 
   initSelect(): void {
-    this.list.forEach(item => {
+    this.list?.list?.forEach(item => {
       item.checked = false;
     });
-    this.list.forEach(item => {
-      this.defaultSelectedIndex.map(e => {
+    this.list?.list?.forEach(item => {
+      this.defaultSelectedIndex?.map(e => {
         if (item.value === e) {
           this.selectedList.push(item);
         }
