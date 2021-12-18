@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 
 export interface ISelect {
   list: ISelectItem[];
@@ -16,12 +16,11 @@ export interface ISelectItem {
   templateUrl: './custom-select.component.html',
   styleUrls: ['./custom-select.component.scss']
 })
-export class CustomSelectComponent implements OnInit {
+export class CustomSelectComponent implements OnInit, OnChanges {
 
   @Input() list: ISelect;
-  @Input() multiSelect = false;
-  @Input() defaultSelectedIndex: any[];
-  @Output() select: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Input() error: boolean;
+  @Output() selectEvent: EventEmitter<ISelectItem[]> = new EventEmitter<ISelectItem[]>();
   filterInput = '';
   selectedList: ISelectItem[] = [];
   selectIsOpen = false;
@@ -33,7 +32,7 @@ export class CustomSelectComponent implements OnInit {
     this.initSelect();
   }
 
-  ngOnChanges(): void {
+  ngOnChanges() {
     this.initSelect();
   }
 
@@ -53,16 +52,14 @@ export class CustomSelectComponent implements OnInit {
         return e.value !== item.value;
       });
     }
-    if (!this.multiSelect) {
-      this.select.emit(this.selectedList);
-      this.selectedList = [];
-    }
+    this.selectEvent.emit(this.selectedList);
   }
 
   deleteFromList(event: any): void {
     this.selectedList = this.selectedList.filter((e: any) => {
       return e.value !== event.value;
     });
+    this.selectEvent.emit(this.selectedList);
   }
 
   initSelect(): void {
@@ -70,7 +67,7 @@ export class CustomSelectComponent implements OnInit {
       item.checked = false;
     });
     this.list?.list?.forEach(item => {
-      this.defaultSelectedIndex?.map(e => {
+      this.list.defaultChecked?.map((e: number | string) => {
         if (item.value === e) {
           this.selectedList.push(item);
         }
@@ -83,10 +80,5 @@ export class CustomSelectComponent implements OnInit {
       return e.value === item.value;
     });
   }
-
-  save(): void {
-    this.select.emit(this.selectedList);
-  }
-
 
 }

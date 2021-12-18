@@ -2,7 +2,9 @@
 
   <input (input)="search($event)" (focusin)="selectIsOpen = true"
          type="text"
-         class="custom-input">
+         class="custom-input"
+         [ngClass]="{'error' : error}"
+  >
 
   <ul class="select-list" *ngIf="selectIsOpen">
     <ng-container *ngFor="let item of list?.list">
@@ -16,7 +18,6 @@
           type="checkbox"
           [checked]="isChecked(item)"
           [id]="item.value + '_select'"
-          [style]="{'display' : multiSelect? 'block' : 'none'}"
         >
         <label
           [for]="item.value + '_select'"
@@ -27,19 +28,19 @@
     </ng-container>
   </ul>
 
-  <ul *ngIf="multiSelect" class="selected-list">
+  <ul class="selected-list">
     <li
-      class="selected-list-item"
+      class="selected-list-item flex align-items-center"
       *ngFor="let some of selectedList"
-      (click)="deleteFromList(some)"
     >
       {{some.displayText}}
+      <button
+        class="btn center delete-item-btn"
+        (click)="deleteFromList(some)"
+      >
+        <img src="assets/img/close-toast-btn.svg" alt="">
+      </button>
     </li>
   </ul>
-
-  <button *ngIf="multiSelect" (click)="save()">
-    SAVE
-  </button>
-
 
 </div>

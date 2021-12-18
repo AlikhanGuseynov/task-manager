@@ -4,58 +4,64 @@
     Add Task
   </div>
 
-  <form action="" class="task-form">
+  <form action="" class="task-form" #taskForm="ngForm">
 
     <p class="custom-input-label">
       Title
     </p>
-    <input type="text" class="custom-input">
+    <input
+      [(ngModel)]="task.title"
+      #title='ngModel'
+      name="title"
+      required
+      minlength="3"
+      [ngClass]="{'error' : (title.touched && title.invalid) || (title.invalid && !formIsValid) }"
+      type="text"
+      class="custom-input"
+    >
 
     <p class="custom-input-label">
       Description
     </p>
-    <textarea name="" id="" cols="30" rows="10" class="custom-input"></textarea>
+    <textarea
+      [(ngModel)]="task.description"
+      #description='ngModel'
+      name="description"
+      required
+      minlength="3"
+      [ngClass]="{'error' : (description.touched && description.invalid) || (description.invalid && !formIsValid) }"
+      rows="5"
+      class="custom-input"
+    ></textarea>
 
     <p class="custom-input-label">
       Description
     </p>
-    <input type="date" class="custom-input">
-
-    <ng-container *ngIf="isEdit">
-      <p class="custom-input-label">
-        Status
-      </p>
-      <select name="" class="custom-input">
-        <option [value]="taskStatusList.NEW">
-          New
-        </option>
-        <option [value]="taskStatusList.IN_PROGRESS">
-          In Progress
-        </option>
-        <option [value]="taskStatusList.UAT">
-          UAT
-        </option>
-        <option [value]="taskStatusList.DONE">
-          Done
-        </option>
-      </select>
-    </ng-container>
-
+    <input
+      type="date"
+      class="custom-input"
+      [(ngModel)]="dateInput"
+      #deadline='ngModel'
+      name="deadline"
+      (change)="dateInputHandle()"
+      required
+      [min]="minDate"
+      [ngClass]="{'error' : (deadline.touched && deadline.invalid) || (deadline.invalid && !formIsValid) }"
+    >
 
     <p class="custom-input-label">
       Performer
     </p>
 
-
     <app-custom-select
       [list]="userListForSelect"
-      [multiSelect]="true"
+      (selectEvent)="performerHandler($event)"
+      [error]="task?.performers?.length === 0 && !formIsValid"
     ></app-custom-select>
 
-
-
-
-
+    <button class="btn custom-btn primary" (click)="createTask(taskForm)">
+      Create task
+    </button>
 
   </form>
 

@@ -29,3 +29,24 @@ label, input {
 .selected {
   font-weight: 600;
 }
+
+.selected-list {
+  max-height: 100px;
+  margin: 5px 0;
+  overflow-y: auto;
+}
+
+.selected-list-item {
+  font-size: 10px;
+  color: #424242;
+  border: 1px solid #2f2f2f;
+  border-radius: 3px;
+  padding: 5px 10px;
+  display: inline-flex;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.delete-item-btn {
+  margin-left: 5px;
+}

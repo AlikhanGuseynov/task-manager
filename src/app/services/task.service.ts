@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Task} from "../models/task";
-import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {filter, map} from "rxjs/operators";
 import {AuthService} from "./auth.service";
 import {TaskMock} from "../mocks/task.mock";
 import {User} from "../models/user";
@@ -23,14 +21,13 @@ export class TaskService {
   }
 
   getCompanyTaskList(companyId: number) {
-    console.log(
-      this.taskList.filter(e => {
-          return e.companyId === companyId;
-        })
-    )
     return this.taskList.filter(e => {
       return e.companyId === companyId;
     })
+  }
+
+  addTask(task: Task) {
+    this.taskList.push({...task})
   }
 
 
