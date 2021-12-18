@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-.common-input {
+.custom-input {
   border-radius: 3px;
   width: 100%;
   transition: all 300ms ease;
@@ -44,6 +44,11 @@
 }
 
 .custom-input-label + .custom-input-value {
+  margin-top: 7px;
+  margin-bottom: 15px;
+}
+
+.custom-input-label + .custom-input {
   margin-top: 7px;
   margin-bottom: 15px;
 }

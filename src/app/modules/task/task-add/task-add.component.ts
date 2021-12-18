@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TaskStatusEnum} from "../../../enums/task-status.enum";
+import {UserService} from "../../../services/user.service";
+import {AuthService} from "../../../services/auth.service";
+import {User} from "../../../models/user";
 
 @Component({
   selector: 'app-task-add',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskAddComponent implements OnInit {
 
-  constructor() { }
+  taskStatusList = TaskStatusEnum;
+  isEdit = false;
+  currentUser: User;
+  companyUserList: User[];
+
+  constructor(
+    private userService: UserService,
+    private authService: AuthService
+  ) {
+  }
 
   ngOnInit(): void {
+    this.authService.getCurrentUser().subscribe(user => {
+      this.currentUser = user;
+      this.companyUserList = this.userService.getUserListByCompanyId(this.currentUser.companyId);
+    })
   }
+
 
 }

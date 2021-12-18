@@ -1,0 +1,36 @@
+<input (input)="search($event)" type="text">
+
+<ul>
+  <ng-container *ngFor="let item of list">
+    <li [ngStyle]="{'display': item.text.indexOf(filterInput) > -1? 'block' : 'none'}"
+        [ngClass]="isChecked(item)? 'selected' : 'true'"
+    >
+      <input
+        (change)="checkboxHandle($event, item)"
+        type="checkbox"
+        [checked]="isChecked(item)"
+        [id]="item.value + '_select'"
+        [style]="{'display' : multiSelect? 'block' : 'none'}"
+      >
+      <label
+        [for]="item.value + '_select'"
+      >
+        {{item.text}}
+      </label>
+    </li>
+  </ng-container>
+</ul>
+
+<ul *ngIf="multiSelect">
+  <li
+    *ngFor="let some of selectedList"
+    (click)="deleteFromList(some)"
+  >
+    {{some.text}}
+  </li>
+</ul>
+
+
+<button *ngIf="multiSelect" (click)="save()">
+  SAVE
+</button>

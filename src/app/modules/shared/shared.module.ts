@@ -1,10 +1,13 @@
 import {NgModule} from '@angular/core';
 import {CommonModule, DatePipe} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CustomSelectComponent} from "../../components/custom-select/custom-select.component";
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CustomSelectComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -13,7 +16,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   exports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CustomSelectComponent
   ]
 })
 export class SharedModule {

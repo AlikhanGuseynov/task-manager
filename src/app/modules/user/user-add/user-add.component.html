@@ -18,7 +18,7 @@
 
     <input
       type="text"
-      class="common-input"
+      class="custom-input"
       name="userName"
       #userName="ngModel"
       required
@@ -30,7 +30,7 @@
 
     <input
       type="text"
-      class="common-input"
+      class="custom-input"
       name="surname"
       #surname="ngModel"
       required
@@ -42,7 +42,7 @@
 
     <input
       type="text"
-      class="common-input"
+      class="custom-input"
       name="email"
       #email="ngModel"
       required
@@ -55,7 +55,7 @@
     <div class="password-input-wrapper">
       <input
         type="password"
-        class="common-input"
+        class="custom-input"
         name="password"
         #password="ngModel"
         #passwordInput
@@ -78,7 +78,7 @@
       required
       [ngClass]="{'error' : (role.touched && role.invalid) || (role.invalid && !formIsValid)}"
       name="role" id=""
-      class="common-input common-input-select"
+      class="custom-input common-input-select"
     >
       <option [value]="ROLE_ENUM.ADMIN">Admin</option>
       <option [value]="ROLE_ENUM.USER">User</option>
@@ -86,7 +86,7 @@
 
     <input
       type="text"
-      class="common-input"
+      class="custom-input"
       name="position"
       #position="ngModel"
       required
@@ -98,7 +98,7 @@
 
     <input
       type="text"
-      class="common-input"
+      class="custom-input"
       name="department"
       #department="ngModel"
       required

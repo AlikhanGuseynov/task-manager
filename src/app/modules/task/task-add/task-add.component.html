@@ -1,1 +1,59 @@
-<p>task-add works!</p>
+<div class="box">
+
+  <div class="box-header">
+    Add Task
+  </div>
+
+  <form action="" class="task-form">
+
+    <p class="custom-input-label">
+      Title
+    </p>
+    <input type="text" class="custom-input">
+
+    <p class="custom-input-label">
+      Description
+    </p>
+    <textarea name="" id="" cols="30" rows="10" class="custom-input"></textarea>
+
+    <p class="custom-input-label">
+      Description
+    </p>
+    <input type="date" class="custom-input">
+
+    <ng-container *ngIf="isEdit">
+      <p class="custom-input-label">
+        Status
+      </p>
+      <select name="" class="custom-input">
+        <option [value]="taskStatusList.NEW">
+          New
+        </option>
+        <option [value]="taskStatusList.IN_PROGRESS">
+          In Progress
+        </option>
+        <option [value]="taskStatusList.UAT">
+          UAT
+        </option>
+        <option [value]="taskStatusList.DONE">
+          Done
+        </option>
+      </select>
+    </ng-container>
+
+
+    <p class="custom-input-label">
+      Performer
+    </p>
+
+
+    <app-custom-select></app-custom-select>
+
+
+
+
+
+
+  </form>
+
+</div>

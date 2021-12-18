@@ -7,18 +7,18 @@ import {HeaderComponent} from "./components/header/header.component";
 import {DatePipe} from "@angular/common";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [
-    DatePipe
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule
+    ],
+    providers: [
+        DatePipe
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
