@@ -6,13 +6,16 @@
 
     <div class="register-form-inner">
 
+      <p class="custom-input-label">
+        Company Name
+      </p>
       <input
         #companyName="ngModel"
         [(ngModel)]="user.companyName"
         [ngClass]="{'error' : (companyName.touched && companyName.invalid) || (companyName.invalid && !formIsValid)}"
         type="text"
         class="custom-input"
-        placeholder="Organization Name"
+        placeholder="Company Name"
         name="companyName"
         minlength="3"
         required
@@ -21,11 +24,15 @@
         Company name must include min 3 characters.
       </p>
 
+      <p class="custom-input-label">
+        Mobile
+      </p>
       <input
         #mobile="ngModel"
         [(ngModel)]="user.mobile"
         [ngClass]="{'error' : (mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid) }"
-        type="number"
+        type="text"
+        [mask]="'000 (00) 000 00 00'"
         class="custom-input"
         placeholder="Number"
         name="mobile"
@@ -35,6 +42,9 @@
         Enter mobile number.
       </p>
 
+      <p class="custom-input-label">
+        Address
+      </p>
       <input
         #address="ngModel"
         [(ngModel)]="user.address"
@@ -50,6 +60,9 @@
         Address name must include min 3 characters.
       </p>
 
+      <p class="custom-input-label">
+        Name
+      </p>
       <input
         #userName="ngModel"
         [(ngModel)]="user.userName"
@@ -65,6 +78,9 @@
         User name must include min 3 characters.
       </p>
 
+      <p class="custom-input-label">
+        Email
+      </p>
       <input
         #email="ngModel"
         [(ngModel)]="user.email"
@@ -81,6 +97,9 @@
         Please enter password in correct format
       </p>
 
+      <p class="custom-input-label">
+        Password
+      </p>
       <input
         #password="ngModel"
         [(ngModel)]="user.password"

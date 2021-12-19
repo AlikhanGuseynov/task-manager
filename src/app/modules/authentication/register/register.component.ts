@@ -29,12 +29,17 @@ export class RegisterComponent implements OnInit {
   save(form: NgForm) {
     this.formIsValid = form.form.valid;
 
-    this.user.id = new Date().getTime();
-    this.user.role = RoleEnum.ADMIN;
-    this.user.accountCreator = true;
+    if (this.formIsValid){
+      this.user.id = new Date().getTime();
+      this.user.role = RoleEnum.ADMIN;
+      this.user.accountCreator = true;
 
-    if (this.authService.register(this.user)) {
-      this.router.navigate(['/auth/login'])
+      if (this.authService.register(this.user)) {
+        this.router.navigate(['/auth/login'])
+      }
     }
+
+
+
   }
 }

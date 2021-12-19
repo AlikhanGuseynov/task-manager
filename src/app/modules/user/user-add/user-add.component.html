@@ -75,6 +75,7 @@
       #mobile="ngModel"
       required
       minlength="3"
+      [mask]="'000 (00) 000 00 00'"
       [(ngModel)]="user.mobile"
       [ngClass]="{'error' : (mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid)}"
       placeholder="mobile"
