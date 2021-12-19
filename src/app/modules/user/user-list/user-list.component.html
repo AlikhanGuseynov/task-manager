@@ -19,7 +19,7 @@
     <table class="table">
 
       <thead class="thead">
-      <tr>
+      <tr class="tr">
         <th class="th">
           #
         </th>
@@ -51,7 +51,7 @@
       <tbody>
 
       <ng-container *ngFor="let user of userList; let i = index">
-        <tr>
+        <tr class="tr">
           <td class="td">
             {{i}}
           </td>
@@ -65,10 +65,10 @@
             {{getRole(user)}}
           </td>
           <td class="td">
-            {{user?.position}}
+            {{user?.position || '###'}}
           </td>
           <td class="td">
-            {{user?.department}}
+            {{user?.department || '###'}}
           </td>
           <td class="td">
             <p class="last-login">

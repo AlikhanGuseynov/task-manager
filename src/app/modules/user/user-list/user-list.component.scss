@@ -117,11 +117,14 @@
   border-top: 1px solid #E6EAF0;
   border-collapse: collapse;
   transition: all 300ms ease;
+  padding: 10px 0;
+}
 
-  &.active {
-    background: #E6EAF0;
-    border-top: 1px solid transparent;
-  }
+.tr {
+  border-top: 1px solid #E6EAF0;
+  border-collapse: collapse;
+  transition: all 300ms ease;
+  padding: 10px 0;
 }
 
 .th:first-child, .td:first-child {

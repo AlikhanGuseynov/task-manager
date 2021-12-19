@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
   getUserData() {
     this.authService.getCurrentUser().subscribe(user => {
       this.user = {...user};
+      console.log(user)
     })
   }
 

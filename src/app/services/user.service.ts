@@ -43,11 +43,12 @@ export class UserService {
 
   putUser(user: User): boolean {
     let userIsChange = false;
-    this.userList.map(event => {
+    this.userList = this.userList.map(event => {
       if (event.companyId === user.companyId && event.id === user.id) {
         event = user;
         userIsChange = true;
       }
+      return event;
     })
     return userIsChange;
   }

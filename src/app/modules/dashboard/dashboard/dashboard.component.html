@@ -43,10 +43,10 @@
             {{getRole(user)}}
           </td>
           <td class="td">
-            {{user?.position}}
+            {{user?.position || '###'}}
           </td>
           <td class="td">
-            {{user?.department}}
+            {{user?.department || '###'}}
           </td>
           <td class="td">
             <p class="last-login">
@@ -90,9 +90,10 @@
             </p>
             <div>
               <button class="btn go-to-btn"
-                (click)="goToDetail(task)"
+                      (click)="goToDetail(task)"
               >
-                Go to detail</button>
+                Go to detail
+              </button>
             </div>
             <button class="btn center">
               <img class="task-header-arrow" src="assets/img/header-arrow.svg" alt="">

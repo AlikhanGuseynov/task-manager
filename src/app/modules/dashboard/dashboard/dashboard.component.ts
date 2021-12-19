@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user.service";
 import {TaskService} from "../../../services/task.service";
 import {AuthService} from "../../../services/auth.service";
@@ -14,7 +14,7 @@ import {TaskStatusEnum} from "../../../enums/task-status.enum";
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
 
   userList: User[] = [];
   taskList: Task[] = [];
@@ -40,10 +40,15 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  ngAfterViewInit() {
+    this.getData();
+  }
+
   getData() {
     this.userList = this.userService.getUserListByCompanyId(this.currentUser.companyId);
     this.taskList = this.taskService.getCompanyTaskList(this.currentUser.companyId);
     this.taskListCopy = this.taskService.getCompanyTaskList(this.currentUser.companyId);
+    console.log(this.userList)
     this.filterByUser();
     this.activeUser = this.userList[0];
   }

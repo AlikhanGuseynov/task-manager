@@ -20,7 +20,7 @@ export class AuthService {
     private userServices: UserService,
     private router: Router
   ) {
-    const defaultUser = UserMock[0];
+    const defaultUser = UserMock[8];
     this.login({email: defaultUser.email, password: defaultUser.password})
   }
 
