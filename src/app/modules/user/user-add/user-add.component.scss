@@ -11,7 +11,7 @@
 }
 
 .custom-input {
-  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .common-input-select {
@@ -30,6 +30,7 @@
   display: block;
   transition: all 300ms ease;
   width: 100%;
+  margin-top: 20px;
 
   &:hover {
     opacity: .9;
@@ -37,7 +38,7 @@
 }
 
 .password-input-wrapper {
-  margin-bottom: 20px;
+  margin-top: 20px;
   position: relative;
 
   .custom-input {

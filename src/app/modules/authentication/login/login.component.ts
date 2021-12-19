@@ -44,4 +44,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  togglePassword(password: HTMLInputElement) {
+    password.type = password.type === 'password' ? 'text' : 'password';
+  }
+
 }
