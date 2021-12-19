@@ -22,7 +22,7 @@ export class AppComponent {
   ) {
     this.authService.getIsLogin().subscribe(event => {
       this.isLogin = event;
-      if (!this.isLogin) {
+      if (!this.isLogin && !window.location.pathname.includes('auth')) {
         this.router.navigate(['/auth/login'])
       }
     })

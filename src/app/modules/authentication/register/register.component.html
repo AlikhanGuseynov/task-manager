@@ -6,10 +6,13 @@
 
     <div class="register-form-inner">
 
+      <p class="custom-input-label">
+        Company name
+      </p>
       <input
         #companyName="ngModel"
         [(ngModel)]="user.companyName"
-        [ngClass]="{'error' : (companyName.touched && companyName.invalid) || (companyName.invalid && !formIsValid)}"
+        [ngClass]="{'error' : companyName.invalid && !formIsValid}"
         type="text"
         class="custom-input"
         placeholder="Organization Name"
@@ -17,28 +20,34 @@
         minlength="3"
         required
       >
-      <p class="error-text" *ngIf="(companyName.touched && companyName.invalid) || (companyName.invalid && !formIsValid)">
+      <p class="error-text" *ngIf="companyName.invalid && !formIsValid">
         Company name must include min 3 characters.
       </p>
 
+      <p class="custom-input-label">
+        Mobile number
+      </p>
       <input
         #mobile="ngModel"
         [(ngModel)]="user.mobile"
-        [ngClass]="{'error' : (mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid) }"
+        [ngClass]="{'error' : mobile.invalid && !formIsValid }"
         type="number"
         class="custom-input"
         placeholder="Number"
         name="mobile"
         required
       >
-      <p class="error-text" *ngIf="(mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid)">
+      <p class="error-text" *ngIf="mobile.invalid && !formIsValid">
         Enter mobile number.
       </p>
 
+      <p class="custom-input-label">
+        Address
+      </p>
       <input
         #address="ngModel"
         [(ngModel)]="user.address"
-        [ngClass]="{'error' : (address.touched && address.invalid) || (address.invalid && !formIsValid) }"
+        [ngClass]="{'error' : address.invalid && !formIsValid }"
         type="text"
         class="custom-input"
         placeholder="Address"
@@ -46,14 +55,17 @@
         minlength="3"
         required
       >
-      <p class="error-text" *ngIf="(address.touched && address.invalid) || (address.invalid && !formIsValid)">
+      <p class="error-text" *ngIf="address.invalid && !formIsValid">
         Address name must include min 3 characters.
       </p>
 
+      <p class="custom-input-label">
+        Name
+      </p>
       <input
         #userName="ngModel"
         [(ngModel)]="user.userName"
-        [ngClass]="{'error' : (userName.touched && userName.invalid) || (userName.invalid && !formIsValid) }"
+        [ngClass]="{'error' : userName.invalid && !formIsValid }"
         type="text"
         class="custom-input"
         placeholder="Name"
@@ -61,14 +73,17 @@
         minlength="3"
         required
       >
-      <p class="error-text" *ngIf="(userName.touched && userName.invalid) || (userName.invalid && !formIsValid)">
+      <p class="error-text" *ngIf="userName.invalid && !formIsValid">
         User name must include min 3 characters.
       </p>
 
+      <p class="custom-input-label">
+        Email
+      </p>
       <input
         #email="ngModel"
         [(ngModel)]="user.email"
-        [ngClass]="{'error' : (email.touched && email.invalid) || (email.invalid && !formIsValid) }"
+        [ngClass]="{'error' : email.invalid && !formIsValid }"
         type="text"
         [pattern]="emailPattern"
         class="custom-input"
@@ -77,14 +92,17 @@
         minlength="3"
         required
       >
-      <p class="error-text" *ngIf="(email.touched && email.invalid) || (email.invalid && !formIsValid)">
+      <p class="error-text" *ngIf="email.invalid && !formIsValid">
         Please enter password in correct format
       </p>
 
+      <p class="custom-input-label">
+        Password
+      </p>
       <input
         #password="ngModel"
         [(ngModel)]="user.password"
-        [ngClass]="{'error' : (password.touched && password.invalid) || (password.invalid && !formIsValid) }"
+        [ngClass]="{'error' : password.invalid && !formIsValid }"
         type="password"
         class="custom-input"
         placeholder="Password"
@@ -93,7 +111,7 @@
         [pattern]="passwordRegex"
         required
       >
-      <p class="error-text" *ngIf="(password.touched && password.invalid) || (password.invalid && !formIsValid)">
+      <p class="error-text" *ngIf="password.invalid && !formIsValid">
         Password must include min 6 alphanumeric characters.
       </p>
 

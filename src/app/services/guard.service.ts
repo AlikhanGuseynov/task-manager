@@ -14,7 +14,6 @@ export class GuardService implements CanActivate {
 
   constructor(
     private authService: AuthService,
-    private router: Router
   ) {
     this.authService.getCurrentUser().subscribe(user => {
       this.user = user;

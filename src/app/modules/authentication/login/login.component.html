@@ -1,7 +1,7 @@
 <div class="register-page">
 
   <p class="register-title">Log In</p>
-  <form #loginForm='ngForm' class="register-form">
+  <form #loginForm='ngForm' class="register-form" autocomplete="off">
 
     <div class="register-form-inner">
 
@@ -12,11 +12,11 @@
         name="email"
         [(ngModel)]="user.email"
         #email="ngModel"
-        [ngClass]="{'error': (email.touched && email.invalid) || (email.invalid && !formIsValid)}"
+        [ngClass]="{'error': email.invalid && !formIsValid}"
         [pattern]="emailPattern"
         required
       >
-      <p class="error-text" *ngIf="(email.touched && email.invalid) || (email.invalid && !formIsValid)">
+      <p class="error-text" *ngIf="email.invalid && !formIsValid">
         Write mail in correct format
       </p>
 
@@ -27,16 +27,16 @@
         name="password"
         [(ngModel)]="user.password"
         #password='ngModel'
-        [ngClass]="{'error': (password.touched && password.invalid) || (password.invalid && !formIsValid)}"
+        [ngClass]="{'error': password.invalid && !formIsValid}"
         required
         [pattern]="passwordRegex"
         minlength="6"
       >
-      <p class="error-text" *ngIf="(password.touched && password.invalid) || (password.invalid && !formIsValid)">
+      <p class="error-text" *ngIf="password.invalid && !formIsValid">
         Password must be at least 6 alphanumeric characters.
       </p>
 
-      <button class="btn custom-btn primary login-btn" (click)="login(loginForm)">
+      <button type="button" class="btn custom-btn primary login-btn" (click)="login(loginForm)">
         Log In
       </button>
 

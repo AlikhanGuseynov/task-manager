@@ -4,6 +4,8 @@ import {AuthService} from "../../../services/auth.service";
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
 import {RoleEnum} from "../../../enums/role.enum";
+import {ToastService} from "../../../services/toast.service";
+import {ToastTypeEnum} from "../../../enums/toast-type.enum";
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastService: ToastService
   ) {
   }
 
@@ -32,16 +35,19 @@ export class LoginComponent implements OnInit {
 
   login(form: NgForm) {
     this.formIsValid = form.form.valid;
-    const loginForm: Login = {
-      email: form.form.controls.email.value,
-      password: form.form.controls.password.value,
-    }
-    const loginResult = this.authService.login(loginForm);
-    if (loginResult && loginResult.role === RoleEnum.ADMIN) {
-      this.router.navigate(['/dashboard'])
-    }else if(loginResult && loginResult.role === RoleEnum.USER){
-      this.router.navigate(['/task'])
+    if (this.formIsValid) {
+      const loginForm: Login = {
+        email: form.form.controls.email.value,
+        password: form.form.controls.password.value,
+      }
+      const loginResult = this.authService.login(loginForm);
+      if (loginResult && loginResult.role === RoleEnum.ADMIN) {
+        this.router.navigate(['/dashboard'])
+      } else if (loginResult && loginResult.role === RoleEnum.USER) {
+        this.router.navigate(['/task'])
+      } else {
+        this.toastService.createToast('Email or password invalid.', ToastTypeEnum.ERROR)
+      }
     }
   }
-
 }
