@@ -41,7 +41,7 @@
     </ul>
   </nav>
 
-  <div class="profile-block" (click)="isOpenMenu = !isOpenMenu">
+  <div class="profile-block" (click)="isOpenMenu = !isOpenMenu" appClickOutSide (clickOutside)="isOpenMenu = false">
 
     <div class="user-data">
       <p class="user-name">
