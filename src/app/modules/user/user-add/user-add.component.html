@@ -21,6 +21,9 @@
       [ngClass]="{'error' : (userName.touched && userName.invalid) || (userName.invalid && !formIsValid)}"
       placeholder="name"
     >
+    <p class="error-text" *ngIf="(userName.touched && userName.invalid) || (userName.invalid && !formIsValid)">
+      User name must include min 3 characters.
+    </p>
 
     <input
       type="text"
@@ -33,6 +36,9 @@
       [ngClass]="{'error' : (surname.touched && surname.invalid) || (surname.invalid && !formIsValid)}"
       placeholder="surname"
     >
+    <p class="error-text" *ngIf="(surname.touched && surname.invalid) || (surname.invalid && !formIsValid)">
+      Surname name must include min 3 characters.
+    </p>
 
     <input
       type="text"
@@ -41,10 +47,14 @@
       #email="ngModel"
       required
       minlength="3"
+      [pattern]="emailPattern"
       [(ngModel)]="user.email"
       [ngClass]="{'error' : (email.touched && email.invalid) || (email.invalid && !formIsValid)}"
       placeholder="email"
     >
+    <p class="error-text" *ngIf="(email.touched && email.invalid) || (email.invalid && !formIsValid)">
+      Please enter password in correct format
+    </p>
 
     <div class="password-input-wrapper">
       <input
@@ -55,7 +65,7 @@
         #passwordInput
         [pattern]="passwordRegex"
         required
-        minlength="3"
+        minlength="6"
         [(ngModel)]="user.password"
         [ngClass]="{'error' : (password.touched && password.invalid) || (password.invalid && !formIsValid)}"
         placeholder="password"
@@ -65,6 +75,9 @@
         <img *ngIf="passwordInput.type === 'password'" src="assets/img/show-pass.svg" class="show-pass" alt="">
       </button>
     </div>
+    <p class="error-text" *ngIf="(password.touched && password.invalid) || (password.invalid && !formIsValid)">
+      Password must include min 6 alphanumeric characters.
+    </p>
 
     <select
       #role="ngModel"
@@ -77,6 +90,9 @@
       <option [value]="ROLE_ENUM.ADMIN">Admin</option>
       <option [value]="ROLE_ENUM.USER">User</option>
     </select>
+    <p class="error-text" *ngIf="(role.touched && role.invalid) || (role.invalid && !formIsValid)">
+      Please select the role.
+    </p>
 
     <input
       type="text"
@@ -89,6 +105,9 @@
       [ngClass]="{'error' : (position.touched && position.invalid) || (position.invalid && !formIsValid)}"
       placeholder="Position at work"
     >
+    <p class="error-text" *ngIf="(position.touched && position.invalid) || (position.invalid && !formIsValid)">
+      Position must include min 3 alphanumeric characters.
+    </p>
 
     <input
       type="text"
@@ -101,6 +120,9 @@
       [ngClass]="{'error' : (department.touched && department.invalid) || (department.invalid && !formIsValid)}"
       placeholder="Department"
     >
+    <p class="error-text" *ngIf="(department.touched && department.invalid) || (department.invalid && !formIsValid)">
+      Department must include min 3 alphanumeric characters.
+    </p>
 
     <button (click)="addUser(userForm)" type="button" class="btn add-user-btn" *ngIf="!userId">
       Add user
