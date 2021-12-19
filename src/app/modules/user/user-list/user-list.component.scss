@@ -1,9 +1,9 @@
 .table {
   width: 100%;
   margin-top: 20px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   overflow: hidden;
+  border-collapse: collapse;
 }
 
 .table-row {
@@ -112,8 +112,6 @@
 .task-cell {
   display: flex;
   align-items: center;
-
-
 }
 
 .action-btn {
@@ -133,6 +131,31 @@
 }
 
 
+.td {
+  font-size: 14px;
+  line-height: 17px;
+  color: #1F4173;
+  padding: 10px 10px 10px 0;
+}
+
+thead {
+  text-align: left;
+}
+
+th {
+  border: none;
+}
+
+.tr {
+  border-top: 1px solid #E6EAF0;
+  border-collapse: collapse;
+  transition: all 300ms ease;
+
+  &.active {
+    background: #E6EAF0;
+    border-top: 1px solid transparent;
+  }
+}
 
 
 

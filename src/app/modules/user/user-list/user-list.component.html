@@ -7,7 +7,8 @@
 
       <div class="search-container">
         <img src="assets/img/search.svg" alt="">
-        <input #filterInput (input)="filter(filterInput)" type="text" class="search-input" placeholder="Search Users by Name, Email or Date">
+        <input #filterInput (input)="filter(filterInput)" type="text" class="search-input"
+               placeholder="Search Users by Name, Email or Date">
       </div>
 
       <button *ngIf="isAdmin" class="btn add-user-btn" [routerLink]="'/user/add'">
@@ -15,71 +16,131 @@
       </button>
 
     </div>
-    <div class="table-row table-row-header">
-      <div class="table-cell">
-        #
-      </div>
-      <div class="table-cell">
-        User
-      </div>
-      <div class="table-cell">
-        Email
-      </div>
-      <div class="table-cell">
-        Role
-      </div>
-      <div class="table-cell">
-        Position at work
-      </div>
-      <div class="table-cell">
-        Department
-      </div>
-      <div class="table-cell">
-        Last login
-      </div>
-      <div class="table-cell">
-        Action
-      </div>
-    </div>
+    <table cellspacing="0" class="table">
 
-    <ng-container *ngFor="let userItem of userList; let i = index">
-      <div class="table-row">
-        <div class="table-cell">
-          {{i}}
-        </div>
-        <div class="table-cell">
-          {{userItem?.userName}} {{userItem.surname}}
-        </div>
-        <div class="table-cell">
-          <p class="email">
-            {{userItem?.email}}
-          </p>
-        </div>
-        <div class="table-cell">
-          {{getRole(userItem)}}
-        </div>
-        <div class="table-cell">
-          {{userItem?.position}}
-        </div>
-        <div class="table-cell">
-          {{userItem?.department}}
-        </div>
-        <div class="table-cell">
-          <p class="last-login">
-            {{getDate(userItem?.lastLogin)}}
-          </p>
-          <p class="last-login">
-            {{getTime(userItem?.lastLogin)}}
-          </p>
-        </div>
-        <div class="table-cell">
-          <button class="btn action-btn" [routerLink]="'/user/edit/' + userItem.id">
-            Edit
-          </button>
-        </div>
-      </div>
-    </ng-container>
+      <thead>
+      <tr>
+        <th class="tr">
+          #
+        </th>
+        <th class="tr">
+          User
+        </th>
+        <th class="tr">
+          Email
+        </th>
+        <th class="tr">
+          Role
+        </th>
+        <th class="tr">
+          Position at work
+        </th>
+        <th class="tr">
+          Department
+        </th>
+        <th class="tr">
+          Last login
+        </th>
+        <th class="tr">
+          Action
+        </th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+
+      <ng-container *ngFor="let user of userList; let i = index">
+        <tr>
+          <td class="td">
+            {{i}}
+          </td>
+          <td class="td">
+            {{user.userName}} {{user.surname}}
+          </td>
+          <td class="td">
+            {{user?.email}}
+          </td>
+          <td class="td">
+            {{getRole(user)}}
+          </td>
+          <td class="td">
+            {{user?.position}}
+          </td>
+          <td class="td">
+            {{user?.department}}
+          </td>
+          <td class="td">
+            <p class="last-login">
+              {{getDate(user?.lastLogin)}}
+            </p>
+            <p class="last-login">
+              {{getTime(user?.lastLogin)}}
+            </p>
+          </td>
+          <td class="td">
+            <button class="btn action-btn" [routerLink]="'/user/edit/' + user.id">
+              Edit
+            </button>
+          </td>
+
+
+        </tr>
+      </ng-container>
+
+
+      </tbody>
+
+    </table>
+
+
+<!--    <ng-container *ngFor="let userItem of userList; let i = index">-->
+<!--      <div class="table-row">-->
+<!--        <div class="table-cell">-->
+<!--          {{i}}-->
+<!--        </div>-->
+<!--        <div class="table-cell">-->
+<!--          {{userItem?.userName}} {{userItem.surname}}-->
+<!--        </div>-->
+<!--        <div class="table-cell">-->
+<!--          <p class="email">-->
+<!--            {{userItem?.email}}-->
+<!--          </p>-->
+<!--        </div>-->
+<!--        <div class="table-cell">-->
+<!--          {{getRole(userItem)}}-->
+<!--        </div>-->
+<!--        <div class="table-cell">-->
+<!--          {{userItem?.position}}-->
+<!--        </div>-->
+<!--        <div class="table-cell">-->
+<!--          {{userItem?.department}}-->
+<!--        </div>-->
+<!--        <div class="table-cell">-->
+<!--          <p class="last-login">-->
+<!--            {{getDate(userItem?.lastLogin)}}-->
+<!--          </p>-->
+<!--          <p class="last-login">-->
+<!--            {{getTime(userItem?.lastLogin)}}-->
+<!--          </p>-->
+<!--        </div>-->
+<!--        <div class="table-cell">-->
+<!--          <button class="btn action-btn" [routerLink]="'/user/edit/' + userItem.id">-->
+<!--            Edit-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </ng-container>-->
   </div>
+
+
+
+
+
+
+
+
+
 
 
 </div>
