@@ -1,129 +1,136 @@
 <div class="register-page">
 
-  <p class="register-title">Register</p>
+  <div class="register-page-left">
 
-  <form #registerForm='ngForm' action="" class="register-form">
+  </div>
 
-    <div class="register-form-inner">
+  <div class="register-page-right">
+    <div class="register-page-right-inner">
+      <p class="register-title">Register</p>
+      <form #registerForm='ngForm' action="" class="register-form">
 
-      <p class="custom-input-label">
-        Company Name
-      </p>
-      <input
-        #companyName="ngModel"
-        [(ngModel)]="user.companyName"
-        [ngClass]="{'error' : (companyName.touched && companyName.invalid) || (companyName.invalid && !formIsValid)}"
-        type="text"
-        class="custom-input"
-        placeholder="Company Name"
-        name="companyName"
-        minlength="3"
-        required
-      >
-      <p class="error-text" *ngIf="(companyName.touched && companyName.invalid) || (companyName.invalid && !formIsValid)">
-        Company name must include min 3 characters.
-      </p>
+        <div class="register-form-inner">
 
-      <p class="custom-input-label">
-        Mobile
-      </p>
-      <input
-        #mobile="ngModel"
-        [(ngModel)]="user.mobile"
-        [ngClass]="{'error' : (mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid) }"
-        type="text"
-        [mask]="'000 (00) 000 00 00'"
-        class="custom-input"
-        placeholder="Number"
-        name="mobile"
-        required
-      >
-      <p class="error-text" *ngIf="(mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid)">
-        Enter mobile number.
-      </p>
+          <p class="custom-input-label">
+            Company Name
+          </p>
+          <input
+            #companyName="ngModel"
+            [(ngModel)]="user.companyName"
+            [ngClass]="{'error' : (companyName.touched && companyName.invalid) || (companyName.invalid && !formIsValid)}"
+            type="text"
+            class="custom-input"
+            placeholder="Company Name"
+            name="companyName"
+            minlength="3"
+            required
+          >
+          <p class="error-text" *ngIf="(companyName.touched && companyName.invalid) || (companyName.invalid && !formIsValid)">
+            Company name must include min 3 characters.
+          </p>
 
-      <p class="custom-input-label">
-        Address
-      </p>
-      <input
-        #address="ngModel"
-        [(ngModel)]="user.address"
-        [ngClass]="{'error' : (address.touched && address.invalid) || (address.invalid && !formIsValid) }"
-        type="text"
-        class="custom-input"
-        placeholder="Address"
-        name="address"
-        minlength="3"
-        required
-      >
-      <p class="error-text" *ngIf="(address.touched && address.invalid) || (address.invalid && !formIsValid)">
-        Address name must include min 3 characters.
-      </p>
+          <p class="custom-input-label">
+            Mobile
+          </p>
+          <input
+            #mobile="ngModel"
+            [(ngModel)]="user.mobile"
+            [ngClass]="{'error' : (mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid) }"
+            type="text"
+            [mask]="'000 (00) 000 00 00'"
+            class="custom-input"
+            placeholder="Number"
+            name="mobile"
+            required
+          >
+          <p class="error-text" *ngIf="(mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid)">
+            Enter mobile number.
+          </p>
 
-      <p class="custom-input-label">
-        Name
-      </p>
-      <input
-        #userName="ngModel"
-        [(ngModel)]="user.userName"
-        [ngClass]="{'error' : (userName.touched && userName.invalid) || (userName.invalid && !formIsValid) }"
-        type="text"
-        class="custom-input"
-        placeholder="Name"
-        name="userName"
-        minlength="3"
-        required
-      >
-      <p class="error-text" *ngIf="(userName.touched && userName.invalid) || (userName.invalid && !formIsValid)">
-        User name must include min 3 characters.
-      </p>
+          <p class="custom-input-label">
+            Address
+          </p>
+          <input
+            #address="ngModel"
+            [(ngModel)]="user.address"
+            [ngClass]="{'error' : (address.touched && address.invalid) || (address.invalid && !formIsValid) }"
+            type="text"
+            class="custom-input"
+            placeholder="Address"
+            name="address"
+            minlength="3"
+            required
+          >
+          <p class="error-text" *ngIf="(address.touched && address.invalid) || (address.invalid && !formIsValid)">
+            Address name must include min 3 characters.
+          </p>
 
-      <p class="custom-input-label">
-        Email
-      </p>
-      <input
-        #email="ngModel"
-        [(ngModel)]="user.email"
-        [ngClass]="{'error' : (email.touched && email.invalid) || (email.invalid && !formIsValid) }"
-        type="text"
-        [pattern]="emailPattern"
-        class="custom-input"
-        placeholder="Email"
-        name="email"
-        minlength="3"
-        required
-      >
-      <p class="error-text" *ngIf="(email.touched && email.invalid) || (email.invalid && !formIsValid)">
-        Please enter password in correct format
-      </p>
+          <p class="custom-input-label">
+            Name
+          </p>
+          <input
+            #userName="ngModel"
+            [(ngModel)]="user.userName"
+            [ngClass]="{'error' : (userName.touched && userName.invalid) || (userName.invalid && !formIsValid) }"
+            type="text"
+            class="custom-input"
+            placeholder="Name"
+            name="userName"
+            minlength="3"
+            required
+          >
+          <p class="error-text" *ngIf="(userName.touched && userName.invalid) || (userName.invalid && !formIsValid)">
+            User name must include min 3 characters.
+          </p>
 
-      <p class="custom-input-label">
-        Password
-      </p>
-      <input
-        #password="ngModel"
-        [(ngModel)]="user.password"
-        [ngClass]="{'error' : (password.touched && password.invalid) || (password.invalid && !formIsValid) }"
-        type="password"
-        class="custom-input"
-        placeholder="Password"
-        name="password"
-        minlength="6"
-        [pattern]="passwordRegex"
-        required
-      >
-      <p class="error-text" *ngIf="(password.touched && password.invalid) || (password.invalid && !formIsValid)">
-        Password must include min 6 alphanumeric characters.
-      </p>
+          <p class="custom-input-label">
+            Email
+          </p>
+          <input
+            #email="ngModel"
+            [(ngModel)]="user.email"
+            [ngClass]="{'error' : (email.touched && email.invalid) || (email.invalid && !formIsValid) }"
+            type="text"
+            [pattern]="emailPattern"
+            class="custom-input"
+            placeholder="Email"
+            name="email"
+            minlength="3"
+            required
+          >
+          <p class="error-text" *ngIf="(email.touched && email.invalid) || (email.invalid && !formIsValid)">
+            Please enter password in correct format
+          </p>
 
-      <button class="btn custom-btn primary save-btn" (click)="save(registerForm)">
-        Save
-      </button>
+          <p class="custom-input-label">
+            Password
+          </p>
+          <input
+            #password="ngModel"
+            [(ngModel)]="user.password"
+            [ngClass]="{'error' : (password.touched && password.invalid) || (password.invalid && !formIsValid) }"
+            type="password"
+            class="custom-input"
+            placeholder="Password"
+            name="password"
+            minlength="6"
+            [pattern]="passwordRegex"
+            required
+          >
+          <p class="error-text" *ngIf="(password.touched && password.invalid) || (password.invalid && !formIsValid)">
+            Password must include min 6 alphanumeric characters.
+          </p>
 
-      <p class="login-question">You have an account, <a [routerLink]="'/auth/login'">log in</a></p>
+          <button class="btn custom-btn primary save-btn" (click)="save(registerForm)">
+            Save
+          </button>
 
+          <p class="login-question">You have an account, <a [routerLink]="'/auth/login'">log in</a></p>
+
+        </div>
+
+      </form>
     </div>
-
-  </form>
+  </div>
 
 </div>
