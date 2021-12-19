@@ -29,10 +29,11 @@
         #password='ngModel'
         [ngClass]="{'error': (password.touched && password.invalid) || (password.invalid && !formIsValid)}"
         required
+        [pattern]="passwordRegex"
         minlength="6"
       >
       <p class="error-text" *ngIf="(password.touched && password.invalid) || (password.invalid && !formIsValid)">
-        Password must be at least 6 characters.
+        Password must be at least 6 alphanumeric characters.
       </p>
 
       <button class="btn custom-btn primary login-btn" (click)="login(loginForm)">

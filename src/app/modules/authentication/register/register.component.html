@@ -89,11 +89,12 @@
         class="custom-input"
         placeholder="Password"
         name="password"
-        minlength="3"
+        minlength="6"
+        [pattern]="passwordRegex"
         required
       >
       <p class="error-text" *ngIf="(password.touched && password.invalid) || (password.invalid && !formIsValid)">
-        Password must include min 3 characters.
+        Password must include min 6 alphanumeric characters.
       </p>
 
       <button class="btn custom-btn primary save-btn" (click)="save(registerForm)">
