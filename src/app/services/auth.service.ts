@@ -21,7 +21,7 @@ export class AuthService {
     private router: Router
   ) {
     const defaultUser = UserMock[0];
-    // this.login({email: defaultUser.email, password: defaultUser.password})
+    this.login({email: defaultUser.email, password: defaultUser.password})
   }
 
   login(params: Login) {

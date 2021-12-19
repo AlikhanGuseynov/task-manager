@@ -1,6 +1,5 @@
 .table {
   width: 100%;
-  margin-top: 20px;
   border-radius: 8px;
   overflow: hidden;
   border-collapse: collapse;
@@ -18,33 +17,10 @@
   background: rgba(244, 242, 255, 0.5);
 }
 
-.table-cell {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  color: #25213B;
-}
-
-.table-row-header {
-  background: #F4F2FF !important;
-
-  .table-cell {
-    font-weight: 600;
-    font-size: 16px;
-  }
-}
-
 .last-login {
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
-  color: #6E6893;
-}
-
-.email {
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: 0.05em;
   color: #6E6893;
 }
 
@@ -109,11 +85,6 @@
   }
 }
 
-.task-cell {
-  display: flex;
-  align-items: center;
-}
-
 .action-btn {
   margin-left: 10px;
   cursor: pointer;
@@ -138,15 +109,11 @@
   padding: 10px 10px 10px 0;
 }
 
-thead {
+.thead {
   text-align: left;
 }
 
-th {
-  border: none;
-}
-
-.tr {
+.th {
   border-top: 1px solid #E6EAF0;
   border-collapse: collapse;
   transition: all 300ms ease;
@@ -157,9 +124,9 @@ th {
   }
 }
 
-
-
-
+.th:first-child, .td:first-child {
+  padding-left: 10px;
+}
 
 
 
