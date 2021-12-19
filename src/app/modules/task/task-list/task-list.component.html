@@ -105,6 +105,11 @@
           [ngClass]="{'error' : (deadline.touched && deadline.invalid) || (deadline.invalid && !formIsValid) }"
         >
 
+        <p class="custom-input-label">Task create</p>
+        <p class="custom-input-value">
+          {{currentTask?.createDate | date : 'dd-MM-yyyy / HH:mm'}}
+        </p>
+
         <p class="custom-input-label">Status</p>
         <p class="custom-input-value" *ngIf="!edit">
           {{getStatus(currentTask?.status)}}

@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HeaderComponent} from "./components/header/header.component";
 import {DatePipe} from "@angular/common";
+import {SharedModule} from "./modules/shared/shared.module";
 
 @NgModule({
     declarations: [
@@ -13,7 +14,8 @@ import {DatePipe} from "@angular/common";
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        SharedModule
     ],
     providers: [
         DatePipe

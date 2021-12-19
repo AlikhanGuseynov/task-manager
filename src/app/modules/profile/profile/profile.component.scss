@@ -1,0 +1,31 @@
+.title {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  color: #1F4173;
+}
+
+.profile-form {
+  width: 450px;
+  padding: 20px;
+}
+
+.edit-btn {
+  padding: 7px 10px;
+  font-size: 16px;
+  line-height: 17px;
+  border: 1px solid #152c4e;
+  color: #1F4173;
+  border-radius: 3px;
+  transition: all 300ms ease;
+  margin-left: 10px;
+
+  &.cancel {
+    background: #D4D6D9;
+    border: 1px solid #D4D6D9;
+  }
+
+  &:hover {
+    background: #f4f9ff;
+  }
+}

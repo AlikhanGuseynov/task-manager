@@ -1,0 +1,109 @@
+<div class="box">
+  <div class="box-header flex align-items-center justify-content-between">
+    <p class="title">
+      Profile
+    </p>
+
+    <button *ngIf="!edit" class="btn edit-btn" (click)="edit = true">
+      Edit
+    </button>
+
+    <div class="flex align-items-center" *ngIf="edit">
+      <button class="btn edit-btn cancel" (click)="cancel()">
+        Cancel
+      </button>
+
+      <button class="btn edit-btn" (click)="save(profileForm)">
+        Save
+      </button>
+    </div>
+
+
+  </div>
+
+  <form class="profile-form" #profileForm="ngForm">
+
+
+    <p class="custom-input-label">Name</p>
+    <input
+      class="custom-input"
+      [disabled]="!edit"
+      [ngClass]="{
+          'no-edit' : !edit,
+          'error' : name.invalid && !formIsValid
+          }"
+      type="text"
+      required
+      minlength="3"
+      #name="ngModel"
+      [(ngModel)]="user.userName"
+      name="name"
+    >
+
+    <p class="custom-input-label">Surname</p>
+    <input
+      class="custom-input"
+      [disabled]="!edit"
+      [ngClass]="{
+          'no-edit' : !edit,
+          'error' : surname.invalid && !formIsValid
+          }"
+      type="text"
+      required
+      minlength="3"
+      #surname="ngModel"
+      [(ngModel)]="user.surname"
+      name="surname"
+    >
+
+    <p class="custom-input-label">Mobile number</p>
+    <input
+      class="custom-input"
+      [disabled]="!edit"
+      [ngClass]="{
+          'no-edit' : !edit,
+          'error' : mobile.invalid && !formIsValid
+          }"
+      type="text"
+      required
+      minlength="3"
+      #mobile="ngModel"
+      [(ngModel)]="user.mobile"
+      name="mobile"
+    >
+
+    <p class="custom-input-label">Mobile email</p>
+    <input
+      class="custom-input"
+      [disabled]="!edit"
+      [ngClass]="{
+          'no-edit' : !edit,
+          'error' : email.invalid && !formIsValid
+          }"
+      type="text"
+      required
+      minlength="3"
+      #email="ngModel"
+      [(ngModel)]="user.email"
+      name="email"
+    >
+    <p class="custom-input-label">Address</p>
+    <input
+      class="custom-input"
+      [disabled]="!edit"
+      [ngClass]="{
+          'no-edit' : !edit,
+          'error' : address.invalid && !formIsValid
+          }"
+      type="text"
+      required
+      minlength="3"
+      #address="ngModel"
+      [(ngModel)]="user.address"
+      name="address"
+    >
+
+
+  </form>
+
+</div>

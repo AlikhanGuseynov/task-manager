@@ -6,8 +6,8 @@ import {GuardService} from "../../services/guard.service";
 
 const routes: Routes = [
   {path: 'list', component: UserListComponent},
-  {path: 'add', component: UserAddComponent, canActivate: [GuardService]},
-  {path: 'edit/:id', component: UserAddComponent, canActivate: [GuardService]},
+  {path: 'add', component: UserAddComponent},
+  {path: 'edit/:id', component: UserAddComponent},
   {path: '', redirectTo: '/user/list'}
 ];
 

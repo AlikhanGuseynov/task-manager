@@ -78,6 +78,7 @@ export class TaskAddComponent implements OnInit {
       this.task.companyId = this.currentUser.companyId;
       this.task.creator = this.currentUser;
       this.task.status = TaskStatusEnum.NEW;
+      this.task.createDate = new Date().getTime();
       this.taskService.addTask(this.task)
       this.router.navigate(['/task/list'])
       this.toastService.createToast('New task was added.', ToastTypeEnum.SUCCESS)
