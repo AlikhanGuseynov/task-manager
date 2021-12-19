@@ -10,6 +10,9 @@
 
   <form class="form" #userForm='ngForm'>
 
+    <p class="custom-input-label">
+      Name
+    </p>
     <input
       type="text"
       class="custom-input"
@@ -25,6 +28,9 @@
       User name must include min 3 characters.
     </p>
 
+    <p class="custom-input-label">
+      Surname
+    </p>
     <input
       type="text"
       class="custom-input"
@@ -40,6 +46,9 @@
       Surname name must include min 3 characters.
     </p>
 
+    <p class="custom-input-label">
+      Email
+    </p>
     <input
       type="text"
       class="custom-input"
@@ -56,6 +65,28 @@
       Please enter password in correct format
     </p>
 
+    <p class="custom-input-label">
+      Mobile
+    </p>
+    <input
+      type="text"
+      class="custom-input"
+      name="mobile"
+      #mobile="ngModel"
+      required
+      minlength="3"
+      [mask]="'000 (00) 000 00 00'"
+      [(ngModel)]="user.mobile"
+      [ngClass]="{'error' : (mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid)}"
+      placeholder="mobile"
+    >
+    <p class="error-text" *ngIf="(mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid)">
+      Please enter password in correct format
+    </p>
+
+    <p class="custom-input-label">
+      Password
+    </p>
     <div class="password-input-wrapper">
       <input
         type="password"
@@ -79,6 +110,9 @@
       Password must include min 6 alphanumeric characters.
     </p>
 
+    <p class="custom-input-label">
+      Role
+    </p>
     <select
       #role="ngModel"
       [(ngModel)]="user.role"
@@ -94,6 +128,9 @@
       Please select the role.
     </p>
 
+    <p class="custom-input-label">
+      Position at work
+    </p>
     <input
       type="text"
       class="custom-input"
@@ -109,6 +146,9 @@
       Position must include min 3 alphanumeric characters.
     </p>
 
+    <p class="custom-input-label">
+      Department
+    </p>
     <input
       type="text"
       class="custom-input"

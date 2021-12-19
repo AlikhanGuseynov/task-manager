@@ -46,6 +46,7 @@ export class UserAddComponent implements OnInit {
     this.authServices.getCurrentUser().subscribe(e => {
       this.currentUser = e;
     });
+    console.log(this.user)
   }
 
   ngOnInit(): void {
@@ -77,6 +78,7 @@ export class UserAddComponent implements OnInit {
     if (this.formIsValid) {
       this.user.id = new Date().getTime();
       this.user.companyId = this.currentUser.companyId;
+      this.user.companyName = this.currentUser.companyName;
       this.user.role = Number(this.user.role);
       this.user.accountCreator = false;
       const result = this.userServices.setUser(this.user)

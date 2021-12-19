@@ -1,5 +1,22 @@
-.custom-input {
-  margin-top: 15px;
+.register-page {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  width: 100vw;
+  height: 100vh;
+}
+
+.register-page-left {
+  background-image: url('../../../../assets/img/login.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.register-page-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #fff;
 }
 
 .register-form {
@@ -8,20 +25,11 @@
 }
 
 .register-title {
-  font-size: 35px;
-  line-height: 21px;
-  color: #1B242C;
-  font-weight: 700;
-  margin-bottom: 25px;
-}
-
-.register-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #1A1A1A;
+  margin-bottom: 10px;
 }
 
 .login-question {
@@ -39,9 +47,33 @@
 
 .login-btn {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-.error-text {
-  margin-top: 5px;
+.h-line {
+  border-bottom: 1px solid #E5E5E5;;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.password-input-wrapper {
+  position: relative;
+  margin-top: 7px;
+
+  .custom-input {
+    margin: 0;
+  }
+}
+
+.password-toggle-btn {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+
+  img {
+    width: 20px;
+  }
 }

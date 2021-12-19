@@ -1,50 +1,70 @@
 <div class="register-page">
 
-  <p class="register-title">Log In</p>
-  <form #loginForm='ngForm' class="register-form" autocomplete="off">
+  <div class="register-page-left">
 
-    <div class="register-form-inner">
+  </div>
 
-      <input
-        type="text"
-        class="custom-input"
-        placeholder="email"
-        name="email"
-        [(ngModel)]="user.email"
-        #email="ngModel"
-        [ngClass]="{'error': email.invalid && !formIsValid}"
-        [pattern]="emailPattern"
-        required
-      >
-      <p class="error-text" *ngIf="email.invalid && !formIsValid">
-        Write mail in correct format
-      </p>
+  <div class="register-page-right">
+    <div class="register-page-right-inner">
+      <p class="register-title">Nice to see you again</p>
+      <form #loginForm='ngForm' class="register-form">
+        <div class="register-form-inner">
+          <p class="custom-input-label">
+            Email
+          </p>
+          <input
+            type="text"
+            class="custom-input"
+            placeholder="email"
+            name="email"
+            [(ngModel)]="user.email"
+            #email="ngModel"
+            [ngClass]="{'error': email.invalid && !formIsValid}"
+            [pattern]="emailPattern"
+            required
+          >
+          <p class="error-text" *ngIf="email.invalid && !formIsValid">
+            Write mail in correct format
+          </p>
 
-      <input
-        type="password"
-        class="custom-input"
-        placeholder="Password"
-        name="password"
-        [(ngModel)]="user.password"
-        #password='ngModel'
-        [ngClass]="{'error': password.invalid && !formIsValid}"
-        required
-        [pattern]="passwordRegex"
-        minlength="6"
-      >
-      <p class="error-text" *ngIf="password.invalid && !formIsValid">
-        Password must be at least 6 alphanumeric characters.
-      </p>
 
-      <button type="button" class="btn custom-btn primary login-btn" (click)="login(loginForm)">
-        Log In
-      </button>
+          <p class="custom-input-label">
+            Password
+          </p>
+          <div class="password-input-wrapper">
 
-      <p class="login-question">Don’t you have an account, <a [routerLink]="'/auth/register'">sign up</a></p>
+          <input
+            type="password"
+            class="custom-input"
+            placeholder="Password"
+            name="password"
+            [(ngModel)]="user.password"
+            #passwordInput
+            #password='ngModel'
+            [ngClass]="{'error': password.invalid && !formIsValid}"
+            required
+            [pattern]="passwordRegex"
+            minlength="6"
+          >
+          <button type="button" class="btn password-toggle-btn" (click)="togglePassword(passwordInput)">
+            <img *ngIf="passwordInput.type === 'text'" src="assets/img/hide-pass.svg" class="hide-pass" alt="">
+            <img *ngIf="passwordInput.type === 'password'" src="assets/img/show-pass.svg" class="show-pass" alt="">
+          </button>
+          </div>
 
+          <p class="error-text" *ngIf="password.invalid && !formIsValid">
+            Password must be at least 6 alphanumeric characters.
+          </p>
+
+          <div class="h-line"></div>
+
+          <button type="button" class="btn custom-btn primary login-btn" (click)="login(loginForm)">
+            Log In
+          </button>
+          <p class="login-question">Don’t you have an account, <a [routerLink]="'/auth/register'">sign up</a></p>
+        </div>
+      </form>
     </div>
-
-
-  </form>
+  </div>
 
 </div>
