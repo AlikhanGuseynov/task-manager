@@ -38,9 +38,6 @@
         Last login
       </div>
       <div class="table-cell">
-        Active Tasks
-      </div>
-      <div class="table-cell">
         Action
       </div>
     </div>
@@ -74,12 +71,6 @@
           <p class="last-login">
             {{getTime(userItem?.lastLogin)}}
           </p>
-        </div>
-        <div class="table-cell">
-          <div class="task-cell">
-            {{getSolvedTasks(userItem?.taskCounter, userItem?.solvedTaskCounter)}}
-            <button class="btn action-btn">Show all</button>
-          </div>
         </div>
         <div class="table-cell">
           <button class="btn action-btn" [routerLink]="'/user/edit/' + userItem.id">

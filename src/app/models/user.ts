@@ -14,8 +14,6 @@ export class User {
   lastLogin?: number;
   role?: RoleEnum.USER | RoleEnum.ADMIN;
   id: number;
-  taskCounter?: number;
-  solvedTaskCounter?: number;
 
   constructor(
     companyName?: string,
@@ -30,13 +28,11 @@ export class User {
     lastLogin?: number,
     role?: RoleEnum.USER | RoleEnum.ADMIN,
     id?: number,
-    taskCounter?: number,
-    solvedTaskCounter?: number,
     companyId?: number,
   ) {
     this.companyName = companyName ? companyName : '';
     this.companyId = companyId ? companyId : -1;
-    this.mobile = mobile ? mobile : -1;
+    this.mobile = mobile ? mobile : 994;
     this.address = address ? address : '';
     this.userName = userName ? userName : '';
     this.surname = surname ? surname : '';
@@ -47,8 +43,6 @@ export class User {
     this.lastLogin = lastLogin ? lastLogin : -1;
     this.role = role ? role : undefined;
     this.id = id ? id : -1;
-    this.taskCounter = id ? id : 0;
-    this.solvedTaskCounter = id ? id : 0;
   }
 
 }

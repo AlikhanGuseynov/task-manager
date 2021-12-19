@@ -67,9 +67,9 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   }
 
   getTaskList() {
-    this.taskList = this.taskService.getCompanyTaskList(this.currentUser.companyId);
+    this.taskList = this.taskService.getCompanyTaskList(this.currentUser?.companyId);
     this.currentTask = {...this.taskList[0]}
-    this.defaultSelectedPerformers = this.currentTask.performers.map(item => {
+    this.defaultSelectedPerformers = this.currentTask?.performers?.map(item => {
       return item.id
     })
     if (this.taskId) {

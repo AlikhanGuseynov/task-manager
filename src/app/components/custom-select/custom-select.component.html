@@ -6,6 +6,9 @@
          [ngClass]="{'error' : error}"
   >
 
+  <img class="arrow" src="assets/img/header-arrow.svg" alt="">
+
+
   <ul class="select-list" *ngIf="selectIsOpen">
     <ng-container *ngFor="let item of list?.list">
       <li

@@ -6,6 +6,13 @@ label, input {
   position: relative;
 }
 
+.arrow {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .select-list {
   position: absolute;
   margin-top: 10px;

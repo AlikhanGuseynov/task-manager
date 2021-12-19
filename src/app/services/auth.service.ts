@@ -29,6 +29,7 @@ export class AuthService {
       return item.email === params.email && item.password === params.password;
     })
     if (user) {
+      user.lastLogin = new Date().getTime();
       this.setCurrentUser(user);
     }
     return user;
@@ -63,6 +64,5 @@ export class AuthService {
   register(user: User) {
     this.userServices.setUser(user);
   }
-
 
 }

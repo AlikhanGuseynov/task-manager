@@ -9,6 +9,9 @@
         Add task
       </button>
     </div>
+    <div class="note" *ngIf="taskList.length === 0">
+      This company don`t have a task.
+    </div>
     <div class="task-list">
       <ng-container *ngFor="let task of taskList">
         <div
@@ -28,9 +31,13 @@
       <p class="task-title">
         Task detail
       </p>
-      <button class="btn add-task-btn" *ngIf="edit === false" (click)="editToggle()">
-        Edit task
-      </button>
+
+      <ng-container *ngIf="taskList.length !== 0">
+        <button class="btn add-task-btn" *ngIf="edit === false" (click)="editToggle()">
+          Edit task
+        </button>
+      </ng-container>
+
       <div class="flex align-items-center" *ngIf="edit === true">
         <button class="btn add-task-btn cancel" (click)="cancelChanges(currentTask.id)">
           Cancel
@@ -41,7 +48,10 @@
       </div>
     </div>
 
-    <div class="task-detail-body">
+    <div
+      class="task-detail-body"
+      [hidden]="taskList.length === 0"
+    >
       <form class="task-form" #taskForm="ngForm">
 
         <p class="custom-input-label">Title</p>

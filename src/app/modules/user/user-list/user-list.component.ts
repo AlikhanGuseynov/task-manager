@@ -45,10 +45,6 @@ export class UserListComponent implements OnInit, AfterViewInit {
     this.userListCopy = [...userList];
   }
 
-  getSolvedTasks(a: number | undefined, b: number | undefined) {
-    return a && b ? (a - b) : 0
-  }
-
   getRole(userItem: User) {
     if (userItem?.role === RoleEnum.ADMIN) {
       return 'Admin';
