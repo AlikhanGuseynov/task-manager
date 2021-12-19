@@ -3,6 +3,7 @@ import {Login} from "../../../models/login";
 import {AuthService} from "../../../services/auth.service";
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
+import {RoleEnum} from "../../../enums/role.enum";
 
 @Component({
   selector: 'app-login',
@@ -34,8 +35,11 @@ export class LoginComponent implements OnInit {
       email: form.form.controls.email.value,
       password: form.form.controls.password.value,
     }
-    if (this.authService.login(loginForm)) {
+    const loginResult = this.authService.login(loginForm);
+    if (loginResult && loginResult.role === RoleEnum.ADMIN) {
       this.router.navigate(['/dashboard'])
+    }else if(loginResult && loginResult.role === RoleEnum.USER){
+      this.router.navigate(['/task'])
     }
   }
 

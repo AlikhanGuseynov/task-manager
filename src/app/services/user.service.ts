@@ -36,7 +36,6 @@ export class UserService {
       return false;
     } else {
       this.userList.push({...user})
-      console.log(this.userList)
       this.toastService.createToast('New user vas add.', ToastTypeEnum.SUCCESS)
       return true;
     }

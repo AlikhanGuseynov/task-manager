@@ -87,8 +87,4 @@ export class UserAddComponent implements OnInit {
     }
   }
 
-  testUserCreate() {
-    this.user = {...this.testUser}
-    this.userServices.setUser(this.user)
-  }
 }
