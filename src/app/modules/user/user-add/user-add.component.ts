@@ -19,8 +19,6 @@ export class UserAddComponent implements OnInit {
   currentUser: User = new User();
   formIsValid = true;
   ROLE_ENUM = RoleEnum;
-  testUser = new User('admin@admin.com', 123, 'admin@admin.com', 'admin@admin.com', 'admin@admin.com',
-    'admin@admin.com', 'admin@admin.com', 'admin@admin.com', 'admin@admin.com', RoleEnum.USER, 123)
   passwordRegex = /^[a-zA-Z0-9]+$/
 
   constructor(
@@ -79,6 +77,7 @@ export class UserAddComponent implements OnInit {
       this.user.id = new Date().getTime();
       this.user.companyId = this.currentUser.companyId;
       this.user.role = Number(this.user.role);
+      this.user.accountCreator = false;
       const result = this.userServices.setUser(this.user)
       if (result) {
         this.formIsValid = true;

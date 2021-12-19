@@ -10,9 +10,10 @@ export class User {
   email: string;
   password: string;
   position?: string;
+  accountCreator?: boolean;
   department?: string;
   lastLogin?: number;
-  role?: RoleEnum.USER | RoleEnum.ADMIN;
+  role?: RoleEnum;
   id: number;
 
   constructor(
@@ -24,9 +25,10 @@ export class User {
     email?: string,
     password?: string,
     position?: string,
+    accountCreator?: boolean,
     department?: string,
     lastLogin?: number,
-    role?: RoleEnum.USER | RoleEnum.ADMIN,
+    role?: RoleEnum,
     id?: number,
     companyId?: number,
   ) {
@@ -39,6 +41,7 @@ export class User {
     this.email = email ? email : '';
     this.password = password ? password : '';
     this.position = position ? position : '';
+    this.accountCreator = accountCreator ? accountCreator : false;
     this.department = department ? department : '';
     this.lastLogin = lastLogin ? lastLogin : -1;
     this.role = role ? role : undefined;

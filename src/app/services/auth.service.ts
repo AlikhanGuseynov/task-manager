@@ -62,7 +62,7 @@ export class AuthService {
   }
 
   register(user: User) {
-    this.userServices.setUser(user);
+    return this.userServices.setUser(user);
   }
 
 }

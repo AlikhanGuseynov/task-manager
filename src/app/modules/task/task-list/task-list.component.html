@@ -32,11 +32,9 @@
         Task detail
       </p>
 
-      <ng-container *ngIf="taskList.length !== 0">
-        <button class="btn add-task-btn" *ngIf="edit === false" (click)="editToggle()">
-          Edit task
-        </button>
-      </ng-container>
+      <button class="btn add-task-btn" [disabled]="taskList.length === 0" *ngIf="edit === false" (click)="editToggle()">
+        Edit task
+      </button>
 
       <div class="flex align-items-center" *ngIf="edit === true">
         <button class="btn add-task-btn cancel" (click)="cancelChanges(currentTask.id)">

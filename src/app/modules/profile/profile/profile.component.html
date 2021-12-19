@@ -87,6 +87,7 @@
       [(ngModel)]="user.email"
       name="email"
     >
+
     <p class="custom-input-label">Address</p>
     <input
       class="custom-input"
@@ -100,6 +101,37 @@
       minlength="3"
       #address="ngModel"
       [(ngModel)]="user.address"
+      name="address"
+    >
+
+    <p class="custom-input-label">Position at work</p>
+    <input
+      class="custom-input"
+      [disabled]="!edit"
+      [ngClass]="{
+          'no-edit' : !edit,
+          'error' : position.invalid && !formIsValid
+          }"
+      type="text"
+      required
+      minlength="3"
+      #position="ngModel"
+      [(ngModel)]="user.position"
+      name="address"
+    >
+    <p class="custom-input-label">Department</p>
+    <input
+      class="custom-input"
+      [disabled]="!edit"
+      [ngClass]="{
+          'no-edit' : !edit,
+          'error' : department.invalid && !formIsValid
+          }"
+      type="text"
+      required
+      minlength="3"
+      #department="ngModel"
+      [(ngModel)]="user.department"
       name="address"
     >
 
