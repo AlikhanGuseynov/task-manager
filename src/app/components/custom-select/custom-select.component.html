@@ -1,12 +1,15 @@
 <div class="select-container" appClickOutSide (clickOutside)="selectIsOpen = false">
 
-  <input (input)="search($event)" (focusin)="selectIsOpen = true"
-         type="text"
-         class="custom-input"
-         [ngClass]="{'error' : error}"
-  >
+  <div class="custom-select-container">
+    <input (input)="search($event)" (focusin)="selectIsOpen = true"
+           type="text"
+           class="custom-input"
+           [ngClass]="{'error' : error}"
+    >
 
-  <img class="arrow" src="assets/img/header-arrow.svg" alt="">
+    <img class="arrow" src="assets/img/header-arrow.svg" alt="">
+  </div>
+
 
 
   <ul class="select-list" *ngIf="selectIsOpen">

@@ -13,6 +13,10 @@ label, input {
   transform: translateY(-50%);
 }
 
+.custom-select-container{
+  position: relative;
+}
+
 .select-list {
   position: absolute;
   margin-top: 10px;

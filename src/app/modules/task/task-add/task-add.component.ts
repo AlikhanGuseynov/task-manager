@@ -47,7 +47,7 @@ export class TaskAddComponent implements OnInit {
       this.userListForSelect.list = this.userList?.map(e => {
         return {
           value: e.id,
-          displayText: e?.userName + e?.surname
+          displayText: e?.userName + ' '+ e?.surname
         }
       })
     })
