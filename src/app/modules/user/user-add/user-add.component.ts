@@ -46,7 +46,6 @@ export class UserAddComponent implements OnInit {
     this.authServices.getCurrentUser().subscribe(e => {
       this.currentUser = e;
     });
-    console.log(this.user)
   }
 
   ngOnInit(): void {

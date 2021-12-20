@@ -56,11 +56,19 @@ export class UserListComponent implements OnInit, AfterViewInit {
   }
 
   getDate(lastLogin: number | undefined) {
-    return this.datePipe.transform(lastLogin, 'dd-MM-yyyy')
+    if (lastLogin && lastLogin < 0) {
+      return 'No info about last login'
+    } else {
+      return this.datePipe.transform(lastLogin, 'dd-MM-yyyy')
+    }
   }
 
   getTime(lastLogin: number | undefined) {
-    return this.datePipe.transform(lastLogin, 'HH:mm:ss')
+    if (lastLogin && lastLogin < 0) {
+      return ''
+    } else {
+      return this.datePipe.transform(lastLogin, 'HH:mm:ss')
+    }
   }
 
   filter(filterInput: HTMLInputElement) {

@@ -39,7 +39,6 @@ export class TaskService {
       }
       return e;
     })
-    console.log(this.taskList)
     return changed;
   }
 

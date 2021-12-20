@@ -48,7 +48,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.userList = this.userService.getUserListByCompanyId(this.currentUser.companyId);
     this.taskList = this.taskService.getCompanyTaskList(this.currentUser.companyId);
     this.taskListCopy = this.taskService.getCompanyTaskList(this.currentUser.companyId);
-    console.log(this.userList)
     this.filterByUser();
     this.activeUser = this.userList[0];
   }
@@ -83,11 +82,19 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   getDate(lastLogin: number | undefined) {
-    return this.datePipe.transform(lastLogin, 'dd-MM-yyyy')
+    if (lastLogin && lastLogin < 0) {
+      return 'No info about last login.'
+    } else {
+      return this.datePipe.transform(lastLogin, 'dd-MM-yyyy')
+    }
   }
 
   getTime(lastLogin: number | undefined) {
-    return this.datePipe.transform(lastLogin, 'HH:mm:ss')
+    if (lastLogin && lastLogin < 0) {
+      return 'No info about last login.'
+    } else {
+      return this.datePipe.transform(lastLogin, 'HH:mm:ss')
+    }
   }
 
   selectActiveUser(user: User) {

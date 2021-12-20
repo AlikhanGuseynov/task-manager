@@ -62,7 +62,7 @@
       placeholder="email"
     >
     <p class="error-text" *ngIf="(email.touched && email.invalid) || (email.invalid && !formIsValid)">
-      Please enter password in correct format
+      Please enter email in correct format
     </p>
 
     <p class="custom-input-label">
@@ -81,7 +81,7 @@
       placeholder="mobile"
     >
     <p class="error-text" *ngIf="(mobile.touched && mobile.invalid) || (mobile.invalid && !formIsValid)">
-      Please enter password in correct format
+      Please enter mobile in correct format
     </p>
 
     <p class="custom-input-label">
@@ -162,6 +162,24 @@
     >
     <p class="error-text" *ngIf="(department.touched && department.invalid) || (department.invalid && !formIsValid)">
       Department must include min 3 alphanumeric characters.
+    </p>
+
+    <p class="custom-input-label">
+      Address
+    </p>
+    <input
+      type="text"
+      class="custom-input"
+      name="address"
+      #address="ngModel"
+      required
+      minlength="3"
+      [(ngModel)]="user.address"
+      [ngClass]="{'error' : (address.touched && address.invalid) || (address.invalid && !formIsValid)}"
+      placeholder="Department"
+    >
+    <p class="error-text" *ngIf="(address.touched && address.invalid) || (address.invalid && !formIsValid)">
+      Address must include min 3 alphanumeric characters.
     </p>
 
     <button (click)="addUser(userForm)" type="button" class="btn add-user-btn" *ngIf="!userId">
