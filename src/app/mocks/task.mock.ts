@@ -1,6 +1,5 @@
 import {Task} from "../models/task";
 import {TaskStatusEnum} from "../enums/task-status.enum";
-import {User} from "../models/user";
 import {UserMock} from "./user.mock";
 
 export const TaskMock: Task[] = [
