@@ -14,7 +14,7 @@ import {TaskStatusEnum} from "../../../enums/task-status.enum";
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit {
 
   userList: User[] = [];
   taskList: Task[] = [];
@@ -37,14 +37,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-
-  }
-
-  ngAfterViewInit() {
     this.getData();
   }
 
   getData() {
+    console.log(0)
     this.userList = this.userService.getUserListByCompanyId(this.currentUser.companyId);
     this.taskList = this.taskService.getCompanyTaskList(this.currentUser.companyId);
     this.taskListCopy = this.taskService.getCompanyTaskList(this.currentUser.companyId);
